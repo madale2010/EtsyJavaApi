@@ -1,0 +1,6 @@
+{
+  "name": "Etsyjavaapi",
+  "tagline": "Etsy Java Api",
+  "body": "# EtsyJavaApi\r\n\r\nEtsy Java Api lets you configure oauth and make api calls based on the Etsy Api Framework.\r\nMaking call request and reading responses has never been easier. After you have configured your etsy service file you can simply build the object your looking for and add it with a simple method call. Will be working on adding the functionality for all method calls, some need tweaking.\r\n\r\n# Example \r\n\t\t//Create a listing item, note by default we put items in a draft state unless you change it.\r\n\t\tListing draft = new Listing();\r\n\t\t//Enter all required data for processing\r\n\t\tdraft.setPrice(\"0.20\");\r\n\t\tdraft.setQuantity(new Double(\"0.0\"));\r\n\t\tdraft.setTitle(\"do not use\");\r\n\t\tdraft.setWhen_made(\"2010_2016\");\r\n\t\tdraft.setWho_made(\"i_did\");\r\n\t\tdraft.setDescription(\"fake\");\r\n\t\t//Existing shipping template is needed\r\n\t\tdraft.setShipping_template_id(new Long(\"18656190424\"));\r\n\t\t//Here is where the magic happens and using scribe we can push a new listing to the etsy server.\r\n\t\tdraft.createListing();",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
