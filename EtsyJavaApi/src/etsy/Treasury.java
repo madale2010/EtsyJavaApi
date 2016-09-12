@@ -2,27 +2,47 @@ package etsy;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Treasury {
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Treasury extends EtsyService {
+	@JsonProperty("id")
 	private String id;
+	@JsonProperty("title")
 	private String title;
+	@JsonProperty("description")
 	private String description;
-	private int homepage;
-	private boolean mature;
-	private boolean isPrivate;
+	@JsonProperty("homepage")
+	private Integer homepage;
+	@JsonProperty("mature")
+	private Boolean mature;
+	@JsonProperty("private")
+	private Boolean isPrivate;
+	@JsonProperty("locale")
 	private String locale;
-	private int comment_count;
+	@JsonProperty("comment_count")
+	private Integer comment_count;
+	@JsonProperty("tags")
 	private ArrayList<String> tags;
+	@JsonProperty("counts")
 	private TreasuryCounts counts;
-	private float hotness;
+	@JsonProperty("hotness")
+	private Float hotness;
+	@JsonProperty("hotness_color")
 	private String hotness_color;
-	private int userId;
+	@JsonProperty("user_id")
+	private Integer userId;
+	@JsonProperty("user_name")
 	private String userName;
-	private int userAvatarId;
+	@JsonProperty("user_avatar_id")
+	private Integer userAvatarId;
+	@JsonProperty("listings")
 	private ArrayList<TreasuryListing> listings;
-	private float creationTsz;
-	private int becamePrivateDate;
+	@JsonProperty("creation_tsz")
+	private Float creationTsz;
+	@JsonProperty("became_public_date")
+	private Integer becamePrivateDate;
 	/**
 	 * @return the id
 	 */
@@ -62,37 +82,37 @@ public class Treasury {
 	/**
 	 * @return the homepage
 	 */
-	public int getHomepage() {
+	public Integer getHomepage() {
 		return homepage;
 	}
 	/**
 	 * @param homepage the homepage to set
 	 */
-	public void setHomepage(int homepage) {
+	public void setHomepage(Integer homepage) {
 		this.homepage = homepage;
 	}
 	/**
 	 * @return the mature
 	 */
-	public boolean isMature() {
+	public Boolean isMature() {
 		return mature;
 	}
 	/**
 	 * @param mature the mature to set
 	 */
-	public void setMature(boolean mature) {
+	public void setMature(Boolean mature) {
 		this.mature = mature;
 	}
 	/**
 	 * @return the isPrivate
 	 */
-	public boolean isPrivate() {
+	public Boolean isPrivate() {
 		return isPrivate;
 	}
 	/**
 	 * @param isPrivate the isPrivate to set
 	 */
-	public void setPrivate(boolean isPrivate) {
+	public void setPrivate(Boolean isPrivate) {
 		this.isPrivate = isPrivate;
 	}
 	/**
@@ -110,13 +130,13 @@ public class Treasury {
 	/**
 	 * @return the comment_count
 	 */
-	public int getComment_count() {
+	public Integer getComment_count() {
 		return comment_count;
 	}
 	/**
 	 * @param comment_count the comment_count to set
 	 */
-	public void setComment_count(int comment_count) {
+	public void setComment_count(Integer comment_count) {
 		this.comment_count = comment_count;
 	}
 	/**
@@ -146,13 +166,13 @@ public class Treasury {
 	/**
 	 * @return the hotness
 	 */
-	public float getHotness() {
+	public Float getHotness() {
 		return hotness;
 	}
 	/**
 	 * @param hotness the hotness to set
 	 */
-	public void setHotness(float hotness) {
+	public void setHotness(Float hotness) {
 		this.hotness = hotness;
 	}
 	/**
@@ -170,13 +190,13 @@ public class Treasury {
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	/**
@@ -194,13 +214,13 @@ public class Treasury {
 	/**
 	 * @return the userAvatarId
 	 */
-	public int getUserAvatarId() {
+	public Integer getUserAvatarId() {
 		return userAvatarId;
 	}
 	/**
 	 * @param userAvatarId the userAvatarId to set
 	 */
-	public void setUserAvatarId(int userAvatarId) {
+	public void setUserAvatarId(Integer userAvatarId) {
 		this.userAvatarId = userAvatarId;
 	}
 	/**
@@ -218,45 +238,50 @@ public class Treasury {
 	/**
 	 * @return the creationTsz
 	 */
-	public float getCreationTsz() {
+	public Float getCreationTsz() {
 		return creationTsz;
 	}
 	/**
 	 * @param creationTsz the creationTsz to set
 	 */
-	public void setCreationTsz(float creationTsz) {
+	public void setCreationTsz(Float creationTsz) {
 		this.creationTsz = creationTsz;
 	}
 	/**
 	 * @return the becamePrivateDate
 	 */
-	public int getBecamePrivateDate() {
+	public Integer getBecamePrivateDate() {
 		return becamePrivateDate;
 	}
 	/**
 	 * @param becamePrivateDate the becamePrivateDate to set
 	 */
-	public void setBecamePrivateDate(int becamePrivateDate) {
+	public void setBecamePrivateDate(Integer becamePrivateDate) {
 		this.becamePrivateDate = becamePrivateDate;
 	}
 	/**
 	*Search Treasuries or else List all Treasuries
 	*/
+	@JsonIgnore
 	public static void getAllTreasuries(){EtsyService.getService("/treasuries");}
 	/**
 	*Create a Treasury
 	*/
+	@JsonIgnore
 	public void createTreasury(){EtsyService.postService("/treasuries", this);}
 	/**
 	*Get a Treasury
 	*/
+	@JsonIgnore
 	public static void getTreasury(String treasuryKey){EtsyService.getService("/treasuries/"+treasuryKey);}
 	/**
 	*Delete a Treasury
 	*/
+	@JsonIgnore
 	public static void deleteTreasury(String treasuryKey){EtsyService.deleteService("/treasuries/"+treasuryKey);}
 	/**
 	*Get a user's Treasuries. Note: The treasury_r permission scope is required in order to display private Treasuries for a user when the boolean parameter include_private is true.
 	*/
+	@JsonIgnore
 	public static void getAllUserTreasuries(String userId){EtsyService.getService("/users/"+userId+"/treasuries");}
 }

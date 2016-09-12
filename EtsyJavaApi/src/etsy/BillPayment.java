@@ -1,40 +1,51 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BillPayment extends EtsyService {
-	private int billPaymentId;
-	private float creationTsz;
+	@JsonProperty("bill_payment_id")
+	private Integer billPaymentId;
+	@JsonProperty("creation_tsz")
+	private Float creationTsz;
+	@JsonProperty("type")
 	private String type;
-	private int typeId;
-	private int userId;
-	private float amount;
+	@JsonProperty("type_id")
+	private Integer typeId;
+	@JsonProperty("user_id")
+	private Integer userId;
+	@JsonProperty("amount")
+	private Float amount;
+	@JsonProperty("currency_code")
 	private String currencyCode;
-	private int creationMonth;
-	private int creationYear;
+	@JsonProperty("creation_month")
+	private Integer creationMonth;
+	@JsonProperty("creation_year")
+	private Integer creationYear;
 	/**
 	 * @return the billPaymentId
 	 */
-	public int getBillPaymentId() {
+	public Integer getBillPaymentId() {
 		return billPaymentId;
 	}
 	/**
 	 * @param billPaymentId the billPaymentId to set
 	 */
-	public void setBillPaymentId(int billPaymentId) {
+	public void setBillPaymentId(Integer billPaymentId) {
 		this.billPaymentId = billPaymentId;
 	}
 	/**
 	 * @return the creationTsz
 	 */
-	public float getCreationTsz() {
+	public Float getCreationTsz() {
 		return creationTsz;
 	}
 	/**
 	 * @param creationTsz the creationTsz to set
 	 */
-	public void setCreationTsz(float creationTsz) {
+	public void setCreationTsz(Float creationTsz) {
 		this.creationTsz = creationTsz;
 	}
 	/**
@@ -52,37 +63,37 @@ public class BillPayment extends EtsyService {
 	/**
 	 * @return the typeId
 	 */
-	public int getTypeId() {
+	public Integer getTypeId() {
 		return typeId;
 	}
 	/**
 	 * @param typeId the typeId to set
 	 */
-	public void setTypeId(int typeId) {
+	public void setTypeId(Integer typeId) {
 		this.typeId = typeId;
 	}
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	/**
 	 * @return the amount
 	 */
-	public float getAmount() {
+	public Float getAmount() {
 		return amount;
 	}
 	/**
 	 * @param amount the amount to set
 	 */
-	public void setAmount(float amount) {
+	public void setAmount(Float amount) {
 		this.amount = amount;
 	}
 	/**
@@ -100,31 +111,32 @@ public class BillPayment extends EtsyService {
 	/**
 	 * @return the creationMonth
 	 */
-	public int getCreationMonth() {
+	public Integer getCreationMonth() {
 		return creationMonth;
 	}
 	/**
 	 * @param creationMonth the creationMonth to set
 	 */
-	public void setCreationMonth(int creationMonth) {
+	public void setCreationMonth(Integer creationMonth) {
 		this.creationMonth = creationMonth;
 	}
 	/**
 	 * @return the creationYear
 	 */
-	public int getCreationYear() {
+	public Integer getCreationYear() {
 		return creationYear;
 	}
 	/**
 	 * @param creationYear the creationYear to set
 	 */
-	public void setCreationYear(int creationYear) {
+	public void setCreationYear(Integer creationYear) {
 		this.creationYear = creationYear;
 	}
 	/**
 	 * Retrieves a set of BillPayment objects associated to a User.
 	 * @return
 	 */
+	@JsonIgnore
 	public static String getAllUserPayments(){
 		return EtsyService.getService("/users/__SELF__/payments");
 	}

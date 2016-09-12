@@ -1,25 +1,33 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BillingOverview extends EtsyService {
-	private boolean isOverdue;
+	@JsonProperty("is_overdue")
+	private Boolean isOverdue;
+	@JsonProperty("currency_code")
 	private String currencyCode;
-	private float overdueBalance;
-	private float balanceDue;
-	private float totalBalance;
+	@JsonProperty("overdue_balance")
+	private Float overdueBalance;
+	@JsonProperty("balance_due")
+	private Float balanceDue;
+	@JsonProperty("total_balance")
+	private Float totalBalance;
+	@JsonProperty("date_due")
 	private String dateDue;
 	/**
 	 * @return the isOverdue
 	 */
-	public boolean isOverdue() {
+	public Boolean isOverdue() {
 		return isOverdue;
 	}
 	/**
 	 * @param isOverdue the isOverdue to set
 	 */
-	public void setOverdue(boolean isOverdue) {
+	public void setOverdue(Boolean isOverdue) {
 		this.isOverdue = isOverdue;
 	}
 	/**
@@ -37,37 +45,37 @@ public class BillingOverview extends EtsyService {
 	/**
 	 * @return the overdueBalance
 	 */
-	public float getOverdueBalance() {
+	public Float getOverdueBalance() {
 		return overdueBalance;
 	}
 	/**
 	 * @param overdueBalance the overdueBalance to set
 	 */
-	public void setOverdueBalance(float overdueBalance) {
+	public void setOverdueBalance(Float overdueBalance) {
 		this.overdueBalance = overdueBalance;
 	}
 	/**
 	 * @return the balanceDue
 	 */
-	public float getBalanceDue() {
+	public Float getBalanceDue() {
 		return balanceDue;
 	}
 	/**
 	 * @param balanceDue the balanceDue to set
 	 */
-	public void setBalanceDue(float balanceDue) {
+	public void setBalanceDue(Float balanceDue) {
 		this.balanceDue = balanceDue;
 	}
 	/**
 	 * @return the totalBalance
 	 */
-	public float getTotalBalance() {
+	public Float getTotalBalance() {
 		return totalBalance;
 	}
 	/**
 	 * @param totalBalance the totalBalance to set
 	 */
-	public void setTotalBalance(float totalBalance) {
+	public void setTotalBalance(Float totalBalance) {
 		this.totalBalance = totalBalance;
 	}
 	/**
@@ -82,6 +90,7 @@ public class BillingOverview extends EtsyService {
 	public void setDateDue(String dateDue) {
 		this.dateDue = dateDue;
 	}
+	@JsonIgnore
 	public static String getUserBillingOverview(){
 		return EtsyService.getService("/users/__SELF__/billing/overview");
 	}

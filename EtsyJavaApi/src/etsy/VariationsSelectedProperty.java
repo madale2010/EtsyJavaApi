@@ -1,36 +1,42 @@
 package etsy;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class VariationsSelectedProperty {
-	private int propertyId;
-	private int valueId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VariationsSelectedProperty extends EtsyService {
+	@JsonProperty("property_id")
+	private Integer propertyId;
+	@JsonProperty("value_id")
+	private Integer valueId;
+	@JsonProperty("formatted_name")
 	private String formattedName;
+	@JsonProperty("formatted_value")
 	private String formattedValue;
-	private boolean isValid;
+	@JsonProperty("is_valid")
+	private Boolean isValid;
 	/**
 	 * @return the propertyId
 	 */
-	public int getPropertyId() { 
+	public Integer getPropertyId() { 
 		return propertyId;
 	}
 	/**
 	 * @param propertyId the propertyId to set
 	 */
-	public void setPropertyId(int propertyId) {
+	public void setPropertyId(Integer propertyId) {
 		this.propertyId = propertyId;
 	}
 	/**
 	 * @return the valueId
 	 */
-	public int getValueId() {
+	public Integer getValueId() {
 		return valueId;
 	}
 	/**
 	 * @param valueId the valueId to set
 	 */
-	public void setValueId(int valueId) {
+	public void setValueId(Integer valueId) {
 		this.valueId = valueId;
 	}
 	/**
@@ -60,13 +66,13 @@ public class VariationsSelectedProperty {
 	/**
 	 * @return the isValid
 	 */
-	public boolean isValid() {
+	public Boolean isValid() {
 		return isValid;
 	}
 	/**
 	 * @param isValid the isValid to set
 	 */
-	public void setValid(boolean isValid) {
+	public void setValid(Boolean isValid) {
 		this.isValid = isValid;
 	}
 }

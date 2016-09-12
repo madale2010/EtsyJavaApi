@@ -2,37 +2,57 @@ package etsy;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Cart extends EtsyService {
-	private int cartId;
+	@JsonProperty("cart_id")
+	private Integer cartId;
+	@JsonProperty("shop_name")
 	private String shopName;
+	@JsonProperty("message_to_seller")
 	private String messageToSeller;
-	private int destinationCountryId;
+	@JsonProperty("destination_country_id")
+	private Integer destinationCountryId;
+	@JsonProperty("coupon_code")
 	private String couponCode;
+	@JsonProperty("currency_code")
 	private String currencyCode;
+	@JsonProperty("total")
 	private String total;
+	@JsonProperty("subtotal")
 	private String subtotal;
+	@JsonProperty("shipping_cost")
 	private String shippingCost;
+	@JsonProperty("tax_cost")
 	private String taxCost;
+	@JsonProperty("discount_amount")
 	private String discountAmount;
+	@JsonProperty("shipping_discount_amount")
 	private String shippingDiscountAmount;
+	@JsonProperty("tax_discount_amount")
 	private String taxDiscountAmount;
+	@JsonProperty("url")
 	private String url;
+	@JsonProperty("listings")
 	private ArrayList<CartListing> listings;
-	private boolean isDownloadOnly;
-	private boolean hasVat;
+	@JsonProperty("is_download_only")
+	private Boolean isDownloadOnly;
+	@JsonProperty("has_vat")
+	private Boolean hasVat;
+	@JsonProperty("shipping_option")
 	private ShippingOption shippingOption;
 	/**
 	 * @return the cartId
 	 */
-	public int getCartId() {
+	public Integer getCartId() {
 		return cartId;
 	}
 	/**
 	 * @param cartId the cartId to set
 	 */
-	public void setCartId(int cartId) {
+	public void setCartId(Integer cartId) {
 		this.cartId = cartId;
 	}
 	/**
@@ -62,13 +82,13 @@ public class Cart extends EtsyService {
 	/**
 	 * @return the destinationCountryId
 	 */
-	public int getDestinationCountryId() {
+	public Integer getDestinationCountryId() {
 		return destinationCountryId;
 	}
 	/**
 	 * @param destinationCountryId the destinationCountryId to set
 	 */
-	public void setDestinationCountryId(int destinationCountryId) {
+	public void setDestinationCountryId(Integer destinationCountryId) {
 		this.destinationCountryId = destinationCountryId;
 	}
 	/**
@@ -206,25 +226,25 @@ public class Cart extends EtsyService {
 	/**
 	 * @return the isDownloadOnly
 	 */
-	public boolean isDownloadOnly() {
+	public Boolean isDownloadOnly() {
 		return isDownloadOnly;
 	}
 	/**
 	 * @param isDownloadOnly the isDownloadOnly to set
 	 */
-	public void setDownloadOnly(boolean isDownloadOnly) {
+	public void setDownloadOnly(Boolean isDownloadOnly) {
 		this.isDownloadOnly = isDownloadOnly;
 	}
 	/**
 	 * @return the hasVat
 	 */
-	public boolean isHasVat() {
+	public Boolean isHasVat() {
 		return hasVat;
 	}
 	/**
 	 * @param hasVat the hasVat to set
 	 */
-	public void setHasVat(boolean hasVat) {
+	public void setHasVat(Boolean hasVat) {
 		this.hasVat = hasVat;
 	}
 	/**
@@ -239,47 +259,47 @@ public class Cart extends EtsyService {
 	public void setShippingOption(ShippingOption shippingOption) {
 		this.shippingOption = shippingOption;
 	}
-
+	@JsonIgnore
 	public static void getAllUserCarts() {
 		EtsyService.getService("/users/__SELF__/carts");
 	}
-
+	@JsonIgnore
 	public void addToCart() {
 		EtsyService.postService("/users/__SELF__/carts", this);
 	}
-
+	@JsonIgnore
 	public void updateCartListingQuantity() {
 		EtsyService.putService("/users/__SELF__/carts", this);
 	}
-
+	@JsonIgnore
 	public static void removeCartListing() {
 		EtsyService.deleteService("/users/__SELF__/carts");
 	}
-
+	@JsonIgnore
 	public static String getUserCart(String cartid) {
 		return EtsyService.getService("/users/__SELF__/carts/"+cartid);
 	}
-
+	@JsonIgnore
 	public void updateCart(String cartid) {
 		EtsyService.putService("/users/__SELF__/carts/"+cartid, this);
 	}
-
+	@JsonIgnore
 	public static void deleteCart(String cartid) {
 		EtsyService.deleteService("/users/__SELF__/carts/"+cartid);
 	}
-
+	@JsonIgnore
 	public void addAndSelectShippingForApplePay(String cartid) {
 		EtsyService.postService("/users/__SELF__/carts/"+cartid+"/add_and_select_shipping_for_apple", this);
 	}
-
+	@JsonIgnore
 	public static void saveListingForLater() {
 		EtsyService.deleteService("/users/__SELF__/carts/save");
 	}
-
+	@JsonIgnore
 	public static String getUserCartForShop(String shopId) {
 		return EtsyService.getService("/users/__SELF__/carts/shop/"+shopId);
 	}
-
+	@JsonIgnore
 	public void createSingleListingCart(){
 		EtsyService.postService("/users/__SELF__/carts/single_listing", this);
 	}

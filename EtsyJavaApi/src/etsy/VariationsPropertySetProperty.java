@@ -1,27 +1,62 @@
 package etsy;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class VariationsPropertySetProperty {
-	private int propertyId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VariationsPropertySetProperty extends EtsyService {
+	@JsonProperty("property_id")
+	private Integer propertyId;
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("input_name")
 	private String inputName;
+	@JsonProperty("label")
 	private String label;
+	@JsonProperty("param")
 	private String param;
+	@JsonProperty("default_option")
 	private String defaultOption;
+	@JsonProperty("description")
 	private String description;
-	private boolean isCustom;
+	@JsonProperty("is_custom")
+	private Boolean isCustom;
+	@JsonProperty("title")
+	private String title;
+	/**
+	 * @return the isCustom
+	 */
+	public Boolean getIsCustom() {
+		return isCustom;
+	}
+	/**
+	 * @param isCustom the isCustom to set
+	 */
+	public void setIsCustom(Boolean isCustom) {
+		this.isCustom = isCustom;
+	}
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	/**
 	 * @return the propertyId
 	 */
-	public int getPropertyId() {
+	public Integer getPropertyId() {
 		return propertyId;
 	}
 	/**
 	 * @param propertyId the propertyId to set
 	 */
-	public void setPropertyId(int propertyId) {
+	public void setPropertyId(Integer propertyId) {
 		this.propertyId = propertyId;
 	}
 	/**
@@ -99,13 +134,13 @@ public class VariationsPropertySetProperty {
 	/**
 	 * @return the isCustom
 	 */
-	public boolean isCustom() {
+	public Boolean isCustom() {
 		return isCustom;
 	}
 	/**
 	 * @param isCustom the isCustom to set
 	 */
-	public void setCustom(boolean isCustom) {
+	public void setCustom(Boolean isCustom) {
 		this.isCustom = isCustom;
 	}
 }

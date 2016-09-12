@@ -1,22 +1,32 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ShippingTemplateEntry {
-	private int shippingTemplateEntryId;
-	private int shippingTemplateId;
+	@JsonProperty("shipping_template_entry_id")
+	private Integer shippingTemplateEntryId;
+	@JsonProperty("shipping_template_id")
+	private Integer shippingTemplateId;
+	@JsonProperty("currency_code")
 	private String currencyCode;
-	private int originCountryId;
-	private int destinationCountryId;
-	private int destinationRegionId;
-	private float primaryCost;
-	private float secondaryCost;
+	@JsonProperty("origin_country_id")
+	private Integer originCountryId;
+	@JsonProperty("destination_country_id")
+	private Integer destinationCountryId;
+	@JsonProperty("destination_region_id")
+	private Integer destinationRegionId;
+	@JsonProperty("primary_cost")
+	private Float primaryCost;
+	@JsonProperty("secondary_cost")
+	private Float secondaryCost;
 
 	/**
 	 * @return the shippingTemplateEntryId
 	 */
-	public int getShippingTemplateEntryId() {
+	public Integer getShippingTemplateEntryId() {
 		return shippingTemplateEntryId;
 	}
 
@@ -24,14 +34,14 @@ public class ShippingTemplateEntry {
 	 * @param shippingTemplateEntryId
 	 *            the shippingTemplateEntryId to set
 	 */
-	public void setShippingTemplateEntryId(int shippingTemplateEntryId) {
+	public void setShippingTemplateEntryId(Integer shippingTemplateEntryId) {
 		this.shippingTemplateEntryId = shippingTemplateEntryId;
 	}
 
 	/**
 	 * @return the shippingTemplateId
 	 */
-	public int getShippingTemplateId() {
+	public Integer getShippingTemplateId() {
 		return shippingTemplateId;
 	}
 
@@ -39,7 +49,7 @@ public class ShippingTemplateEntry {
 	 * @param shippingTemplateId
 	 *            the shippingTemplateId to set
 	 */
-	public void setShippingTemplateId(int shippingTemplateId) {
+	public void setShippingTemplateId(Integer shippingTemplateId) {
 		this.shippingTemplateId = shippingTemplateId;
 	}
 
@@ -61,7 +71,7 @@ public class ShippingTemplateEntry {
 	/**
 	 * @return the originCountryId
 	 */
-	public int getOriginCountryId() {
+	public Integer getOriginCountryId() {
 		return originCountryId;
 	}
 
@@ -69,14 +79,14 @@ public class ShippingTemplateEntry {
 	 * @param originCountryId
 	 *            the originCountryId to set
 	 */
-	public void setOriginCountryId(int originCountryId) {
+	public void setOriginCountryId(Integer originCountryId) {
 		this.originCountryId = originCountryId;
 	}
 
 	/**
 	 * @return the destinationCountryId
 	 */
-	public int getDestinationCountryId() {
+	public Integer getDestinationCountryId() {
 		return destinationCountryId;
 	}
 
@@ -84,14 +94,14 @@ public class ShippingTemplateEntry {
 	 * @param destinationCountryId
 	 *            the destinationCountryId to set
 	 */
-	public void setDestinationCountryId(int destinationCountryId) {
+	public void setDestinationCountryId(Integer destinationCountryId) {
 		this.destinationCountryId = destinationCountryId;
 	}
 
 	/**
 	 * @return the destinationRegionId
 	 */
-	public int getDestinationRegionId() {
+	public Integer getDestinationRegionId() {
 		return destinationRegionId;
 	}
 
@@ -99,14 +109,14 @@ public class ShippingTemplateEntry {
 	 * @param destinationRegionId
 	 *            the destinationRegionId to set
 	 */
-	public void setDestinationRegionId(int destinationRegionId) {
+	public void setDestinationRegionId(Integer destinationRegionId) {
 		this.destinationRegionId = destinationRegionId;
 	}
 
 	/**
 	 * @return the primaryCost
 	 */
-	public float getPrimaryCost() {
+	public Float getPrimaryCost() {
 		return primaryCost;
 	}
 
@@ -114,14 +124,14 @@ public class ShippingTemplateEntry {
 	 * @param primaryCost
 	 *            the primaryCost to set
 	 */
-	public void setPrimaryCost(float primaryCost) {
+	public void setPrimaryCost(Float primaryCost) {
 		this.primaryCost = primaryCost;
 	}
 
 	/**
 	 * @return the secondaryCost
 	 */
-	public float getSecondaryCost() {
+	public Float getSecondaryCost() {
 		return secondaryCost;
 	}
 
@@ -129,7 +139,7 @@ public class ShippingTemplateEntry {
 	 * @param secondaryCost
 	 *            the secondaryCost to set
 	 */
-	public void setSecondaryCost(float secondaryCost) {
+	public void setSecondaryCost(Float secondaryCost) {
 		this.secondaryCost = secondaryCost;
 	}
 
@@ -143,6 +153,7 @@ public class ShippingTemplateEntry {
 	 *		destination_region_id
 	 * @throws EtsyException 
 	 */
+	@JsonIgnore
 	public void createShippingTemplateEntry() throws EtsyException {
 		if(this.shippingTemplateId>0){
 			throw new EtsyException("A shipping_template_id is required when creating template.");
@@ -156,21 +167,24 @@ public class ShippingTemplateEntry {
 	/**
 	 * Retrieves a ShippingTemplateEntry by id.
 	 */
-	public static void getShippingTemplateEntry(int shippingTemplateEntryId) {
+	@JsonIgnore
+	public static void getShippingTemplateEntry(Integer shippingTemplateEntryId) {
 		EtsyService.getService("/shipping/templates/entries/" + shippingTemplateEntryId);
 	}
 
 	/**
 	 * Updates a ShippingTemplateEntry
 	 */
-	public void updateShippingTemplateEntry(int shippingTemplateEntryId) {
+	@JsonIgnore
+	public void updateShippingTemplateEntry(Integer shippingTemplateEntryId) {
 		EtsyService.putService("/shipping/templates/entries/" + shippingTemplateEntryId, this);
 	}
 
 	/**
 	 * Deletes the ShippingTemplateEntry
 	 */
-	public static void deleteShippingTemplateEntry(int shippingTemplateEntryId) {
+	@JsonIgnore
+	public static void deleteShippingTemplateEntry(Integer shippingTemplateEntryId) {
 		EtsyService.deleteService("/shipping/templates/entries/" + shippingTemplateEntryId);
 	}
 }

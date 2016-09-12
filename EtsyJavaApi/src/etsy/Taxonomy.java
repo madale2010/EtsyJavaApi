@@ -2,41 +2,53 @@ package etsy;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Taxonomy {
-	private int id;
-	private int level;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Taxonomy extends EtsyService {
+	@JsonProperty("id")
+	private Integer id;
+	@JsonProperty("level")
+	private Integer level;
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("parent")
 	private String parent;
-	private int parentId;
+	@JsonProperty("parent_id")
+	private Integer parentId;
+	@JsonProperty("path")
 	private String path;
-	private int categoryId;
+	@JsonProperty("category_id")
+	private Integer categoryId;
+	@JsonProperty("children")
 	private ArrayList<Taxonomy> children;
+	@JsonProperty("children_ids")
 	private ArrayList<Integer> childrenIds;
+	@JsonProperty("full_path_taxonomy_ids")
 	private ArrayList<Integer> fullPathTaxonomyIds;
 	/**
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
 	 * @return the level
 	 */
-	public int getLevel() {
+	public Integer getLevel() {
 		return level;
 	}
 	/**
 	 * @param level the level to set
 	 */
-	public void setLevel(int level) {
+	public void setLevel(Integer level) {
 		this.level = level;
 	}
 	/**
@@ -66,13 +78,13 @@ public class Taxonomy {
 	/**
 	 * @return the parentId
 	 */
-	public int getParentId() {
+	public Integer getParentId() {
 		return parentId;
 	}
 	/**
 	 * @param parentId the parentId to set
 	 */
-	public void setParentId(int parentId) {
+	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
 	}
 	/**
@@ -90,13 +102,13 @@ public class Taxonomy {
 	/**
 	 * @return the categoryId
 	 */
-	public int getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 	/**
 	 * @param categoryId the categoryId to set
 	 */
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 	/**
@@ -138,9 +150,11 @@ public class Taxonomy {
 	/**
 	*Retrieve the entire taxonomy as seen by buyers in search.
 	*/
+	@JsonIgnore
 	public static void getBuyerTaxonomy(){EtsyService.getService("/taxonomy/buyer/get");}
 	/**
 	*Retrieve the entire taxonomy as used by sellers in the listing process.
 	*/
+	@JsonIgnore
 	public static void getSellerTaxonomy(){EtsyService.getService("/taxonomy/seller/get");}
 }

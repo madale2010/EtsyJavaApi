@@ -2,22 +2,27 @@ package etsy;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class VariationsProperty {
-	private int propertyId;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VariationsProperty extends EtsyService {
+	@JsonProperty("property_id")
+	private Integer propertyId;
+	@JsonProperty("formatted_name")
 	private String formattedName;
+	@JsonProperty("options")
 	private ArrayList<VariationsOption> options;
 	/**
 	 * @return the propertyId
 	 */
-	public int getPropertyId() {
+	public Integer getPropertyId() {
 		return propertyId;
 	}
 	/**
 	 * @param propertyId the propertyId to set
 	 */
-	public void setPropertyId(int propertyId) {
+	public void setPropertyId(Integer propertyId) {
 		this.propertyId = propertyId;
 	}
 	/**
@@ -47,26 +52,32 @@ public class VariationsProperty {
 	/**
 	*Get the listing variations available for a listing.
 	*/
-	public static void getListingVariations(int listingId){EtsyService.getService("/listings/"+listingId+"/variations");}
+	@JsonIgnore
+	public static void getListingVariations(Integer listingId){EtsyService.getService("/listings/"+listingId+"/variations");}
 	/**
 	*	Update all of the listing variations available for a listing; optionally set custom property names and property qualifiers. Expects a JSON array with a collection of objects of the form: [{"property_id":200, "value":"Black"}, {"property_id":200, "value":"White"}]
 	*/
-	public void createListingVariations(int listingId){EtsyService.postService("/listings/"+listingId+"/variations", this);}
+	@JsonIgnore
+	public void createListingVariations(Integer listingId){EtsyService.postService("/listings/"+listingId+"/variations", this);}
 	/**
 	*	Update all of the listing variations available for a listing. Expects a JSON array with a collection of objects of the form: [{"property_id":200, "value":"Black"}, {"property_id":200, "value":"White"}
 	*/
-	public void updateListingVariations(int listingId){EtsyService.putService("/listings/"+listingId+"/variations", this);}
+	@JsonIgnore
+	public void updateListingVariations(Integer listingId){EtsyService.putService("/listings/"+listingId+"/variations", this);}
 	/**
 	*Add a new listing variation for a listing.
 	*/
-	public void createListingVariation(int listingId, int propertyId){EtsyService.postService("/listings/"+listingId+"/variations/"+propertyId, this);}
+	@JsonIgnore
+	public void createListingVariation(Integer listingId, int propertyId){EtsyService.postService("/listings/"+listingId+"/variations/"+propertyId, this);}
 	/**
 	*Update a listing variation for a listing.
 	*/
-	public void updateListingVariation(int listingId, int propertyId){EtsyService.putService("/listings/"+listingId+"/variations/"+propertyId, this);}
+	@JsonIgnore
+	public void updateListingVariation(Integer listingId, int propertyId){EtsyService.putService("/listings/"+listingId+"/variations/"+propertyId, this);}
 	/**
 	*Remove a listing variation for a listing.
 	*/
-	public static void deleteListingVariation(int listingId, int propertyId){EtsyService.deleteService("/listings/"+listingId+"/variations/"+propertyId);}
+	@JsonIgnore
+	public static void deleteListingVariation(Integer listingId, int propertyId){EtsyService.deleteService("/listings/"+listingId+"/variations/"+propertyId);}
 	
 }

@@ -1,29 +1,40 @@
 package etsy;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class TreasuryListingData {
-	private int userId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class TreasuryListingData extends EtsyService {
+	@JsonProperty("user_id")
+	private Integer userId;
+	@JsonProperty("title")
 	private String title;
-	private float price;
+	@JsonProperty("price")
+	private Float price;
+	@JsonProperty("currency_code")
 	private String currencyCode;
-	private int listingId;
+	@JsonProperty("listing_id")
+	private Integer listingId;
+	@JsonProperty("state")
 	private String state;
+	@JsonProperty("shop_name")
 	private String shopName;
-	private int imageId;
+	@JsonProperty("image_id")
+	private Integer imageId;
+	@JsonProperty("image_url_75x75")
 	private String imageUrl75x75;
+	@JsonProperty("image_url_170x135")
 	private String imageUrl170x135;
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	/**
@@ -41,13 +52,13 @@ public class TreasuryListingData {
 	/**
 	 * @return the price
 	 */
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 	/**
@@ -65,13 +76,13 @@ public class TreasuryListingData {
 	/**
 	 * @return the listingId
 	 */
-	public int getListingId() {
+	public Integer getListingId() {
 		return listingId;
 	}
 	/**
 	 * @param listingId the listingId to set
 	 */
-	public void setListingId(int listingId) {
+	public void setListingId(Integer listingId) {
 		this.listingId = listingId;
 	}
 	/**
@@ -101,13 +112,13 @@ public class TreasuryListingData {
 	/**
 	 * @return the imageId
 	 */
-	public int getImageId() {
+	public Integer getImageId() {
 		return imageId;
 	}
 	/**
 	 * @param imageId the imageId to set
 	 */
-	public void setImageId(int imageId) {
+	public void setImageId(Integer imageId) {
 		this.imageId = imageId;
 	}
 	/**

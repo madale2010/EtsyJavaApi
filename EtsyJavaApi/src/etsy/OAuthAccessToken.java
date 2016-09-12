@@ -6,13 +6,17 @@ public class OAuthAccessToken {
 	 
 	 private Key key; 
 	  
-	 private String service; 
+	 
+	private String service; 
 	  
-	 private String userId; 
+	 
+	private String userId; 
 	  
-	 private String token; 
+	 
+	private String token; 
 	  
-	 private String secret; 
+	 
+	private String secret; 
 	  
 	 public OAuthAccessToken(String service, String userId, String token, String secret) { 
 	  this.service = service; 

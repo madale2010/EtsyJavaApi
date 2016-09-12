@@ -1,37 +1,45 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class PaymentAdjustmentItem {
-	private int paymentAdjustmentItemId;
-	private int paymentAdjustmentId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class PaymentAdjustmentItem extends EtsyService {
+	@JsonProperty("payment_adjustment_item_id")
+	private Integer paymentAdjustmentItemId;
+	@JsonProperty("payment_adjustment_id")
+	private Integer paymentAdjustmentId;
+	@JsonProperty("adjustment_type")
 	private String adjustmentType;
-	private int amount;
-	private int transactionId;
-	private int createDate;
+	@JsonProperty("amount")
+	private Integer amount;
+	@JsonProperty("transaction_id")
+	private Integer transactionId;
+	@JsonProperty("create_date")
+	private Integer createDate;
 	/**
 	 * @return the paymentAdjustmentItemId
 	 */
-	public int getPaymentAdjustmentItemId() {
+	public Integer getPaymentAdjustmentItemId() {
 		return paymentAdjustmentItemId;
 	}
 	/**
 	 * @param paymentAdjustmentItemId the paymentAdjustmentItemId to set
 	 */
-	public void setPaymentAdjustmentItemId(int paymentAdjustmentItemId) {
+	public void setPaymentAdjustmentItemId(Integer paymentAdjustmentItemId) {
 		this.paymentAdjustmentItemId = paymentAdjustmentItemId;
 	}
 	/**
 	 * @return the paymentAdjustmentId
 	 */
-	public int getPaymentAdjustmentId() {
+	public Integer getPaymentAdjustmentId() {
 		return paymentAdjustmentId;
 	}
 	/**
 	 * @param paymentAdjustmentId the paymentAdjustmentId to set
 	 */
-	public void setPaymentAdjustmentId(int paymentAdjustmentId) {
+	public void setPaymentAdjustmentId(Integer paymentAdjustmentId) {
 		this.paymentAdjustmentId = paymentAdjustmentId;
 	}
 	/**
@@ -49,45 +57,47 @@ public class PaymentAdjustmentItem {
 	/**
 	 * @return the amount
 	 */
-	public int getAmount() {
+	public Integer getAmount() {
 		return amount;
 	}
 	/**
 	 * @param amount the amount to set
 	 */
-	public void setAmount(int amount) {
+	public void setAmount(Integer amount) {
 		this.amount = amount;
 	}
 	/**
 	 * @return the transactionId
 	 */
-	public int getTransactionId() {
+	public Integer getTransactionId() {
 		return transactionId;
 	}
 	/**
 	 * @param transactionId the transactionId to set
 	 */
-	public void setTransactionId(int transactionId) {
+	public void setTransactionId(Integer transactionId) {
 		this.transactionId = transactionId;
 	}
 	/**
 	 * @return the createDate
 	 */
-	public int getCreateDate() {
+	public Integer getCreateDate() {
 		return createDate;
 	}
 	/**
 	 * @param createDate the createDate to set
 	 */
-	public void setCreateDate(int createDate) {
+	public void setCreateDate(Integer createDate) {
 		this.createDate = createDate;
 	}
 	/**
 	*Get Direct Checkout Payment Adjustment Items
 	*/
-	public static void findPaymentAdjustmentItem(int paymentId, int paymentAdjustmentId){EtsyService.getService("/payments/"+paymentId+"/adjustments/"+paymentAdjustmentId+"/items");}
+	@JsonIgnore
+	public static void findPaymentAdjustmentItem(Integer paymentId, int paymentAdjustmentId){EtsyService.getService("/payments/"+paymentId+"/adjustments/"+paymentAdjustmentId+"/items");}
 	/**
 	*Get a Direct Checkout Payment Adjustment Item
 	*/
-	public static void findPaymentAdjustmentItem(int paymentId, int paymentAdjustmentId, int paymentAdjustmentItemId){EtsyService.getService("/payments/"+paymentId+"/adjustments/"+paymentAdjustmentId+"/items/"+paymentAdjustmentItemId);}
+	@JsonIgnore
+	public static void findPaymentAdjustmentItem(Integer paymentId, int paymentAdjustmentId, int paymentAdjustmentItemId){EtsyService.getService("/payments/"+paymentId+"/adjustments/"+paymentAdjustmentId+"/items/"+paymentAdjustmentItemId);}
 }

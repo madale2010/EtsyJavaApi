@@ -2,24 +2,31 @@ package etsy;
 
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class VariationsPropertySet {
-	private int propertySetId;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VariationsPropertySet extends EtsyService {
+	@JsonProperty("property_set_id")
+	private Integer propertySetId;
+	@JsonProperty("properties")
 	private Map<Integer, VariationsPropertySetProperty> properties;
+	@JsonProperty("qualifying_properties")
 	private Map<Integer, VariationsPropertySetProperty> qualifyingProperties;
+	@JsonProperty("options")
 	private Map<Integer, String> options;
+	@JsonProperty("qualifiers")
 	private Map<Integer, VariationsPropertyQualifier> qualifiers;
 	/**
 	 * @return the propertySetId
 	 */
-	public int getPropertySetId() {
+	public Integer getPropertySetId() {
 		return propertySetId;
 	}
 	/**
 	 * @param propertySetId the propertySetId to set
 	 */
-	public void setPropertySetId(int propertySetId) {
+	public void setPropertySetId(Integer propertySetId) {
 		this.propertySetId = propertySetId;
 	}
 	/**
@@ -73,6 +80,7 @@ public class VariationsPropertySet {
 	/**
 	*Find the property set for the category id
 	*/
+	@JsonIgnore
 	public static void findPropertySet(){EtsyService.getService("/property_sets");}
 
 

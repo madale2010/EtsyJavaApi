@@ -1,15 +1,22 @@
 package etsy;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class ReceiptShipment {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ReceiptShipment extends EtsyService {
+	@JsonProperty("carrier_name")
 	private String carrierName;
-	private int receiptShippingId;
+	@JsonProperty("receipt_shipping_id")
+	private Integer receiptShippingId;
+	@JsonProperty("tracking_code")
 	private String trackingCode;
+	@JsonProperty("tracking_url")
 	private String trackingUrl;
+	@JsonProperty("buyer_note")
 	private String buyerNote;
-	private int notificationDate;
+	@JsonProperty("notification_date")
+	private Integer notificationDate;
 	/**
 	 * @return the carrierName
 	 */
@@ -25,13 +32,13 @@ public class ReceiptShipment {
 	/**
 	 * @return the receiptShippingId
 	 */
-	public int getReceiptShippingId() {
+	public Integer getReceiptShippingId() {
 		return receiptShippingId;
 	}
 	/**
 	 * @param receiptShippingId the receiptShippingId to set
 	 */
-	public void setReceiptShippingId(int receiptShippingId) {
+	public void setReceiptShippingId(Integer receiptShippingId) {
 		this.receiptShippingId = receiptShippingId;
 	}
 	/**
@@ -73,13 +80,13 @@ public class ReceiptShipment {
 	/**
 	 * @return the notificationDate
 	 */
-	public int getNotificationDate() {
+	public Integer getNotificationDate() {
 		return notificationDate;
 	}
 	/**
 	 * @param notificationDate the notificationDate to set
 	 */
-	public void setNotificationDate(int notificationDate) {
+	public void setNotificationDate(Integer notificationDate) {
 		this.notificationDate = notificationDate;
 	}
 }

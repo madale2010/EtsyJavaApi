@@ -1,15 +1,23 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class FeaturedTreasury {
- private String treasuryKey;
- private int treasuryId;
- private int treasuryOwnerId;
- private String url;
- private String region;
- private float activeDate;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class FeaturedTreasury extends EtsyService {
+ @JsonProperty("treasury_key")
+	private String treasuryKey;
+ @JsonProperty("treasury_id")
+	private Integer treasuryId;
+ @JsonProperty("treasury_owner_id")
+	private Integer treasuryOwnerId;
+ @JsonProperty("url")
+	private String url;
+ @JsonProperty("region")
+	private String region;
+ @JsonProperty("active_date")
+	private Float activeDate;
 /**
  * @return the treasuryKey
  */
@@ -25,25 +33,25 @@ public void setTreasuryKey(String treasuryKey) {
 /**
  * @return the treasuryId
  */
-public int getTreasuryId() {
+public Integer getTreasuryId() {
 	return treasuryId;
 }
 /**
  * @param treasuryId the treasuryId to set
  */
-public void setTreasuryId(int treasuryId) {
+public void setTreasuryId(Integer treasuryId) {
 	this.treasuryId = treasuryId;
 }
 /**
  * @return the treasuryOwnerId
  */
-public int getTreasuryOwnerId() {
+public Integer getTreasuryOwnerId() {
 	return treasuryOwnerId;
 }
 /**
  * @param treasuryOwnerId the treasuryOwnerId to set
  */
-public void setTreasuryOwnerId(int treasuryOwnerId) {
+public void setTreasuryOwnerId(Integer treasuryOwnerId) {
 	this.treasuryOwnerId = treasuryOwnerId;
 }
 /**
@@ -73,19 +81,22 @@ public void setRegion(String region) {
 /**
  * @return the activeDate
  */
-public float getActiveDate() {
+public Float getActiveDate() {
 	return activeDate;
 }
 /**
  * @param activeDate the activeDate to set
  */
-public void setActiveDate(float activeDate) {
+public void setActiveDate(Float activeDate) {
 	this.activeDate = activeDate;
 }
 //Finds all FeaturedTreasuries.
+@JsonIgnore
 public static void getAllFeaturedTreasuries(){EtsyService.getService("/featured_treasuries");}
 //Finds FeaturedTreasury by numeric ID.
+@JsonIgnore
 public static void getFeaturedTreasuryById(String featuredTreasuryId){EtsyService.getService("/featured_treasuries/"+featuredTreasuryId);}
 //Finds all FeaturedTreasury by numeric owner_id.
+@JsonIgnore
 public static void getAllFeaturedTreasuriesByOwner(String ownerId){EtsyService.getService("/featured_treasuries/owner/"+ownerId);}
 }

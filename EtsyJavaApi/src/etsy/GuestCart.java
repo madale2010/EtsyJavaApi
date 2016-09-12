@@ -2,37 +2,57 @@ package etsy;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class GuestCart {
- private int cartId;
- private String shopName;
- private String messageToSeller;
- private int destinationCountryId;
- private String couponCode;
- private String currencyCode;
- private String total;
- private String subtotal;
- private String shippingCost;
- private String taxCost;
- private String discountAmount;
- private String shippingDiscountAmount;
- private String taxDiscountAmount;
- private String url;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class GuestCart extends EtsyService {
+ @JsonProperty("cart_id")
+	private Integer cartId;
+ @JsonProperty("shop_name")
+	private String shopName;
+ @JsonProperty("message_to_seller")
+	private String messageToSeller;
+ @JsonProperty("destination_country_id")
+	private Integer destinationCountryId;
+ @JsonProperty("coupon_code")
+	private String couponCode;
+ @JsonProperty("currency_code")
+	private String currencyCode;
+ @JsonProperty("total")
+	private String total;
+ @JsonProperty("subtotal")
+	private String subtotal;
+ @JsonProperty("shipping_cost")
+	private String shippingCost;
+ @JsonProperty("tax_cost")
+	private String taxCost;
+ @JsonProperty("discount_amount")
+	private String discountAmount;
+ @JsonProperty("shipping_discount_amount")
+	private String shippingDiscountAmount;
+ @JsonProperty("tax_discount_amount")
+	private String taxDiscountAmount;
+ @JsonProperty("url")
+	private String url;
+ @JsonProperty("listings")
  private ArrayList<CartListing> listings;
- private boolean isDownloadOnly;
- private boolean hasVat;
+ @JsonProperty("is_download_only")
+	private Boolean isDownloadOnly;
+ @JsonProperty("has_vat")
+	private Boolean hasVat;
+ @JsonProperty("shipping_option")
  private ShippingOption shippingOption;
 /**
  * @return the cartId
  */
-public int getCartId() {
+public Integer getCartId() {
 	return cartId;
 }
 /**
  * @param cartId the cartId to set
  */
-public void setCartId(int cartId) {
+public void setCartId(Integer cartId) {
 	this.cartId = cartId;
 }
 /**
@@ -62,13 +82,13 @@ public void setMessageToSeller(String messageToSeller) {
 /**
  * @return the destinationCountryId
  */
-public int getDestinationCountryId() {
+public Integer getDestinationCountryId() {
 	return destinationCountryId;
 }
 /**
  * @param destinationCountryId the destinationCountryId to set
  */
-public void setDestinationCountryId(int destinationCountryId) {
+public void setDestinationCountryId(Integer destinationCountryId) {
 	this.destinationCountryId = destinationCountryId;
 }
 /**
@@ -206,25 +226,25 @@ public void setListings(ArrayList<CartListing> listings) {
 /**
  * @return the isDownloadOnly
  */
-public boolean isDownloadOnly() {
+public Boolean isDownloadOnly() {
 	return isDownloadOnly;
 }
 /**
  * @param isDownloadOnly the isDownloadOnly to set
  */
-public void setDownloadOnly(boolean isDownloadOnly) {
+public void setDownloadOnly(Boolean isDownloadOnly) {
 	this.isDownloadOnly = isDownloadOnly;
 }
 /**
  * @return the hasVat
  */
-public boolean isHasVat() {
+public Boolean isHasVat() {
 	return hasVat;
 }
 /**
  * @param hasVat the hasVat to set
  */
-public void setHasVat(boolean hasVat) {
+public void setHasVat(Boolean hasVat) {
 	this.hasVat = hasVat;
 }
 /**
@@ -242,29 +262,38 @@ public void setShippingOption(ShippingOption shippingOption) {
 /**
 *Get all guest's carts
 */
+@JsonIgnore
 public static void getAllGuestCarts(String guestId){EtsyService.getService("/guests/"+guestId+"/carts");}
 /**
 *	Add a listing to guest's cart
-*/public void addToGuestCart(String guestId){EtsyService.postService("/guests/"+guestId+"/carts", this);}
+*
+*/
+@JsonIgnore
+public void addToGuestCart(String guestId){EtsyService.postService("/guests/"+guestId+"/carts", this);}
 /**
 *	Update a guest's cart listing purchase quantity
 */
+@JsonIgnore
 public void updateGuestCartListingQuantity(String guestId){EtsyService.putService("/guests/"+guestId+"/carts", this);}
 /**
 *Remove a listing from a guest's cart
 
 */
+@JsonIgnore
 public static void removeGuestCartListing(String guestId){EtsyService.deleteService("/guests/"+guestId+"/carts");}
 /**
 *Get a guest's cart
 */
+@JsonIgnore
 public static void findGuestCart(String guestId,String cartId){EtsyService.getService("/guests/"+guestId+"/carts/"+cartId);}
 /**
 *Update a guest's cart
 */
+@JsonIgnore
 public void updateGuestCart(String guestId,String cartId){EtsyService.putService("/guests/"+guestId+"/carts/"+cartId, this);}
 /**
 *	Delete a guest's cart
 */
+@JsonIgnore
 public static void deleteGuestCart(String guestId, String cartId){EtsyService.deleteService("/guests/"+guestId+"/carts/"+cartId);}
 }

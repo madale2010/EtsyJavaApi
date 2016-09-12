@@ -3,10 +3,14 @@ package etsy;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Manufacturer {
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Manufacturer extends EtsyService {
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("description")
 	private ArrayList<String> description;
+	@JsonProperty("location")
 	private String location;
 	/**
 	 * @return the name

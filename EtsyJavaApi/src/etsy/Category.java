@@ -1,30 +1,43 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Category extends EtsyService{
-	private int categoryId;
+	@JsonProperty("category_id")
+	private Integer categoryId;
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("meta_title")
 	private String metaTitle;
+	@JsonProperty("meta_keywords")
 	private String metaKeywords;
+	@JsonProperty("meta_description")
 	private String metaDescription;
+	@JsonProperty("page_description")
 	private String pageDescription;
+	@JsonProperty("page_title")
 	private String pageTitle;
+	@JsonProperty("category_name")
 	private String categoryName;
+	@JsonProperty("short_name")
 	private String shortName;
+	@JsonProperty("long_name")
 	private String longName;
-	private int numChildren;
+	@JsonProperty("num_children")
+	private Integer numChildren;
 	/**
 	 * @return the categoryId
 	 */
-	public int getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 	/**
 	 * @param categoryId the categoryId to set
 	 */
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 	/**
@@ -138,25 +151,27 @@ public class Category extends EtsyService{
 	/**
 	 * @return the numChildren
 	 */
-	public int getNumChildren() {
+	public Integer getNumChildren() {
 		return numChildren;
 	}
 	/**
 	 * @param numChildren the numChildren to set
 	 */
-	public void setNumChildren(int numChildren) {
+	public void setNumChildren(Integer numChildren) {
 		this.numChildren = numChildren;
 	}
 	/**
 	 * Retrieves a top-level Category by tag.
 	 * @param tag
 	 */
+	@JsonIgnore
 	public static void getCategory(String tag) {
 		EtsyService.getService("categories/"+tag);
 	}
 	/**
 	 * Retrieves all top-level Categories.
 	 */
+	@JsonIgnore
 	public static void getAllTopCategory() {
 		EtsyService.getService("taxonomy/categories");
 	}
@@ -165,6 +180,7 @@ public class Category extends EtsyService{
 	 * @param tag
 	 * @param subtag
 	 */
+	@JsonIgnore
 	public static void getSubCategory(String tag, String subtag) {
 		EtsyService.getService("categories/"+tag+"/"+subtag);
 	}
@@ -174,6 +190,7 @@ public class Category extends EtsyService{
 	 * @param subtag
 	 * @param subsubtag
 	 */
+	@JsonIgnore
 	public static void getSubSubCategory(String tag, String subtag, String subsubtag) {
 		EtsyService.getService("categories/"+tag+"/"+subtag+"/"+subsubtag);
 	}
@@ -181,6 +198,7 @@ public class Category extends EtsyService{
 	 * Retrieves children of a top-level Category by tag.
 	 * @param tag
 	 */
+	@JsonIgnore
 	public static void getAllTopCategoryChildren(String tag) {
 		EtsyService.getService("/taxonomy/categories/"+tag);
 	}
@@ -189,6 +207,7 @@ public class Category extends EtsyService{
 	 * @param tag
 	 * @param subtag
 	 */
+	@JsonIgnore
 	public static void getAllSubCategoryChildren(String tag, String subtag) {
 		EtsyService.getService("taxonomy/categories/"+tag+"/"+subtag);
 	}

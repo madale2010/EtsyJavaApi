@@ -33,7 +33,7 @@ import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthProvider;
 
-public class EtsyService  {
+public class EtsyService {
 	
 	private static final String client_id = "";
 	private static final String client_secret = "";
@@ -93,13 +93,11 @@ public class EtsyService  {
 	public static String getTokenSecret() {
 		return token_secret;
 	}
-	public static void accessEtsyAccount(String consumer_key, String consumer_secret, String requestToken, String tokenSecret, String shopName) throws Throwable{
-
-	    OAuthConsumer consumer = new DefaultOAuthConsumer( consumer_key, consumer_secret
-	            );
+	public static void accessEtsyAccount(String consumer_key, String consumer_secret, String requestToken, String tokenSecret, String shopName, String scope) throws Throwable{
+	    OAuthConsumer consumer = new DefaultOAuthConsumer( consumer_key, consumer_secret);
 	    if(requestToken==null || tokenSecret==null ){
 	        OAuthProvider provider = new DefaultOAuthProvider(
-	                "https://openapi.etsy.com/v2/oauth/request_token?scope=email_r%20listings_r%20listings_w%20listings_d%20transactions_r%20billing_r%20profile_r",
+	                "https://openapi.etsy.com/v2/oauth/request_token"+scope,
 	                "https://openapi.etsy.com/v2/oauth/access_token",
 	                "https://www.etsy.com/oauth/signin");
 
@@ -176,24 +174,69 @@ public class EtsyService  {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> ArrayList<T> readResults(String results){
-		ArrayList<Listing> resultsList = new ArrayList<Listing>();
+	public <T> ArrayList<T> readResults(String results){
+		if(!results.isEmpty()){
+		ArrayList<T> resultsList = new ArrayList<T>();
+		
 		ObjectMapper mapper = new ObjectMapper();
+		
 		try {
+			Object json = mapper.readValue(results, Object.class);
+			System.out.println("\n\n Reading results\n"+mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json)+"\n\n");
 			JsonNode readTree = mapper.readTree(results);
 			JsonNode listingTree = readTree.get("results");
 			Iterator<JsonNode> iter = listingTree.iterator();
 			while(iter.hasNext()){
 				JsonNode modules = iter.next();
 				
-				resultsList.add(mapper.convertValue(modules, Listing.class));
+				resultsList.add((T) mapper.convertValue(modules, this.getClass()));
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return (ArrayList<T>) resultsList;
+		}
+		else {
+			return null;
+		}
 	}
+	/**
+	 * Reads the result given back from a response and loads them into object
+	 * object.
+	 * @param <T>
+	 * @param results
+	 * @return 
+	 * @return
+	 */
+	
+	@SuppressWarnings("unchecked")
+	public <T> Object readResult(String results){
+		if(!results.isEmpty()){
+			ObjectMapper mapper = new ObjectMapper();
+			
+			Object obj = null;
+			try {
+				JsonNode readTree = mapper.readTree(results);
+				JsonNode listingTree = readTree.get("results");
+				Iterator<JsonNode> iter = listingTree.iterator();
+				
+				while(iter.hasNext()){
+					JsonNode modules = iter.next();
+					
+					obj=(T) mapper.convertValue(modules, this.getClass());
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return obj;
+		}
+		else {
+			return null;
+		}
+	}
+
 	/**
 	 * @return the currentUser
 	 */

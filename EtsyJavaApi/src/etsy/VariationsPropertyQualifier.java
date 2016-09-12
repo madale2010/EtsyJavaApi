@@ -4,22 +4,27 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class VariationsPropertyQualifier {
-	private int propertyId;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VariationsPropertyQualifier extends EtsyService {
+	@JsonProperty("property_id")
+	private Integer propertyId;
+	@JsonProperty("options")
 	private ArrayList<Integer> options;
+	@JsonProperty("results")
 	private Map<String, VariationsPropertyQualifier> results;
+	@JsonProperty("aliases")
 	private Map<String, Integer> aliases;
 	/**
 	 * @return the propertyId
 	 */
-	public int getPropertyId() {
+	public Integer getPropertyId() {
 		return propertyId;
 	}
 	/**
 	 * @param propertyId the propertyId to set
 	 */
-	public void setPropertyId(int propertyId) {
+	public void setPropertyId(Integer propertyId) {
 		this.propertyId = propertyId;
 	}
 	/**

@@ -2,63 +2,109 @@ package etsy;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Shop {
-	public int shopId;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Shop extends EtsyService {
+	@JsonProperty("shop_id")
+	public Integer shopId;
+	@JsonProperty("shop_name")
 	public String shopName;
+	@JsonProperty("first_line")
 	private String firstLine;
+	@JsonProperty("second_line")
 	private String secondLine;
+	@JsonProperty("city")
 	private String city;
+	@JsonProperty("state")
 	private String state;
+	@JsonProperty("zip")
 	private String zip;
-	private int countryId;
-	public int userId;
-	public float creationTsz;
+	@JsonProperty("country_id")
+	private Integer countryId;
+	@JsonProperty("user_id")
+	public Integer userId;
+	@JsonProperty("creation_tsz")
+	public Float creationTsz;
+	@JsonProperty("title")
 	public String title;
+	@JsonProperty("announcement")
 	public String announcement;
+	@JsonProperty("currency_code")
 	public String currencyCode;
-	public boolean isVacation;
+	@JsonProperty("is_vacation")
+	public Boolean isVacation;
+	@JsonProperty("vacation_message")
 	public String vacationMessage;
+	@JsonProperty("sale_message")
 	public String saleMessage;
+	@JsonProperty("digital_sale_message")
 	public String digitalSaleMessage;
-	public float lastUpdatedTsz;
-	public int listingActiveCount;
-	public int digitalListingCount;
+	@JsonProperty("last_updated_tsz")
+	public Float lastUpdatedTsz;
+	@JsonProperty("listing_active_count")
+	public Integer listingActiveCount;
+	@JsonProperty("digital_listing_count")
+	public Integer digitalListingCount;
+	@JsonProperty("login_name")
 	public String loginName;
-	private float lat;
-	private float lon;
-	public boolean acceptsCustomRequests;
+	@JsonProperty("lat")
+	private Float lat;
+	@JsonProperty("lon")
+	private Float lon;
+	@JsonProperty("accepts_custom_requests")
+	public Boolean acceptsCustomRequests;
+	@JsonProperty("policy_welcome")
 	public String policyWelcome;
+	@JsonProperty("policy_payment")
 	public String policyPayment;
+	@JsonProperty("policy_shipping")
 	public String policyShipping;
+	@JsonProperty("policy_refunds")
 	public String policyRefunds;
+	@JsonProperty("policy_additional")
 	public String policyAdditional;
+	@JsonProperty("policy_seller_info")
 	public String policySellerInfo;
-	public float policyUpdatedTsz;
-	public boolean policyHasPrivateReceiptInfo;
+	@JsonProperty("policy_updated_tsz")
+	public Float policyUpdatedTsz;
+	@JsonProperty("policy_has_private_receipt_info")
+	public Boolean policyHasPrivateReceiptInfo;
+	@JsonProperty("vacation_autoreply")
 	public String vacationAutoreply;
+	@JsonProperty("ga_code")
 	private String gaCode;
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("url")
 	public String url;
+	@JsonProperty("image_url_760x100")
 	public String imageUrl_760x100;
-	public int numFavorers;
+	@JsonProperty("num_favorers")
+	public Integer numFavorers;
+	@JsonProperty("languages")
 	public ArrayList<String> languages;
-	public int upcomingLocalEventId;
+	@JsonProperty("upcoming_local_event_id")
+	public Integer upcomingLocalEventId;
+	@JsonProperty("icon_url_fullxfull")
 	public String iconUrlFullxfull;
-	public boolean isUsingStructuredPolicies;
-	public boolean hasOnboardedStructuredPolicies;
-	public boolean hasUnStructuredPolicies;
+	@JsonProperty("is_using_structured_policies")
+	public Boolean isUsingStructuredPolicies;
+	@JsonProperty("has_onboarded_structured_policies")
+	public Boolean hasOnboardedStructuredPolicies;
+	@JsonProperty("has_unstructured_policies")
+	public Boolean hasUnStructuredPolicies;
 	/**
 	 * @return the shopId
 	 */
-	public int getShopId() {
+	public Integer getShopId() {
 		return shopId;
 	}
 	/**
 	 * @param shopId the shopId to set
 	 */
-	public void setShopId(int shopId) {
+	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
 	/**
@@ -136,37 +182,37 @@ public class Shop {
 	/**
 	 * @return the countryId
 	 */
-	public int getCountryId() {
+	public Integer getCountryId() {
 		return countryId;
 	}
 	/**
 	 * @param countryId the countryId to set
 	 */
-	public void setCountryId(int countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	/**
 	 * @return the creationTsz
 	 */
-	public float getCreationTsz() {
+	public Float getCreationTsz() {
 		return creationTsz;
 	}
 	/**
 	 * @param creationTsz the creationTsz to set
 	 */
-	public void setCreationTsz(float creationTsz) {
+	public void setCreationTsz(Float creationTsz) {
 		this.creationTsz = creationTsz;
 	}
 	/**
@@ -208,13 +254,13 @@ public class Shop {
 	/**
 	 * @return the isVacation
 	 */
-	public boolean isVacation() {
+	public Boolean isVacation() {
 		return isVacation;
 	}
 	/**
 	 * @param isVacation the isVacation to set
 	 */
-	public void setVacation(boolean isVacation) {
+	public void setVacation(Boolean isVacation) {
 		this.isVacation = isVacation;
 	}
 	/**
@@ -256,37 +302,37 @@ public class Shop {
 	/**
 	 * @return the lastUpdatedTsz
 	 */
-	public float getLastUpdatedTsz() {
+	public Float getLastUpdatedTsz() {
 		return lastUpdatedTsz;
 	}
 	/**
 	 * @param lastUpdatedTsz the lastUpdatedTsz to set
 	 */
-	public void setLastUpdatedTsz(float lastUpdatedTsz) {
+	public void setLastUpdatedTsz(Float lastUpdatedTsz) {
 		this.lastUpdatedTsz = lastUpdatedTsz;
 	}
 	/**
 	 * @return the listingActiveCount
 	 */
-	public int getListingActiveCount() {
+	public Integer getListingActiveCount() {
 		return listingActiveCount;
 	}
 	/**
 	 * @param listingActiveCount the listingActiveCount to set
 	 */
-	public void setListingActiveCount(int listingActiveCount) {
+	public void setListingActiveCount(Integer listingActiveCount) {
 		this.listingActiveCount = listingActiveCount;
 	}
 	/**
 	 * @return the digitalListingCount
 	 */
-	public int getDigitalListingCount() {
+	public Integer getDigitalListingCount() {
 		return digitalListingCount;
 	}
 	/**
 	 * @param digitalListingCount the digitalListingCount to set
 	 */
-	public void setDigitalListingCount(int digitalListingCount) {
+	public void setDigitalListingCount(Integer digitalListingCount) {
 		this.digitalListingCount = digitalListingCount;
 	}
 	/**
@@ -304,37 +350,37 @@ public class Shop {
 	/**
 	 * @return the lat
 	 */
-	public float getLat() {
+	public Float getLat() {
 		return lat;
 	}
 	/**
 	 * @param lat the lat to set
 	 */
-	public void setLat(float lat) {
+	public void setLat(Float lat) {
 		this.lat = lat;
 	}
 	/**
 	 * @return the lon
 	 */
-	public float getLon() {
+	public Float getLon() {
 		return lon;
 	}
 	/**
 	 * @param lon the lon to set
 	 */
-	public void setLon(float lon) {
+	public void setLon(Float lon) {
 		this.lon = lon;
 	}
 	/**
 	 * @return the acceptsCustomRequests
 	 */
-	public boolean isAcceptsCustomRequests() {
+	public Boolean isAcceptsCustomRequests() {
 		return acceptsCustomRequests;
 	}
 	/**
 	 * @param acceptsCustomRequests the acceptsCustomRequests to set
 	 */
-	public void setAcceptsCustomRequests(boolean acceptsCustomRequests) {
+	public void setAcceptsCustomRequests(Boolean acceptsCustomRequests) {
 		this.acceptsCustomRequests = acceptsCustomRequests;
 	}
 	/**
@@ -412,25 +458,25 @@ public class Shop {
 	/**
 	 * @return the policyUpdatedTsz
 	 */
-	public float getPolicyUpdatedTsz() {
+	public Float getPolicyUpdatedTsz() {
 		return policyUpdatedTsz;
 	}
 	/**
 	 * @param policyUpdatedTsz the policyUpdatedTsz to set
 	 */
-	public void setPolicyUpdatedTsz(float policyUpdatedTsz) {
+	public void setPolicyUpdatedTsz(Float policyUpdatedTsz) {
 		this.policyUpdatedTsz = policyUpdatedTsz;
 	}
 	/**
 	 * @return the policyHasPrivateReceiptInfo
 	 */
-	public boolean isPolicyHasPrivateReceiptInfo() {
+	public Boolean isPolicyHasPrivateReceiptInfo() {
 		return policyHasPrivateReceiptInfo;
 	}
 	/**
 	 * @param policyHasPrivateReceiptInfo the policyHasPrivateReceiptInfo to set
 	 */
-	public void setPolicyHasPrivateReceiptInfo(boolean policyHasPrivateReceiptInfo) {
+	public void setPolicyHasPrivateReceiptInfo(Boolean policyHasPrivateReceiptInfo) {
 		this.policyHasPrivateReceiptInfo = policyHasPrivateReceiptInfo;
 	}
 	/**
@@ -496,13 +542,13 @@ public class Shop {
 	/**
 	 * @return the numFavorers
 	 */
-	public int getNumFavorers() {
+	public Integer getNumFavorers() {
 		return numFavorers;
 	}
 	/**
 	 * @param numFavorers the numFavorers to set
 	 */
-	public void setNumFavorers(int numFavorers) {
+	public void setNumFavorers(Integer numFavorers) {
 		this.numFavorers = numFavorers;
 	}
 	/**
@@ -520,13 +566,13 @@ public class Shop {
 	/**
 	 * @return the upcomingLocalEventId
 	 */
-	public int getUpcomingLocalEventId() {
+	public Integer getUpcomingLocalEventId() {
 		return upcomingLocalEventId;
 	}
 	/**
 	 * @param upcomingLocalEventId the upcomingLocalEventId to set
 	 */
-	public void setUpcomingLocalEventId(int upcomingLocalEventId) {
+	public void setUpcomingLocalEventId(Integer upcomingLocalEventId) {
 		this.upcomingLocalEventId = upcomingLocalEventId;
 	}
 	/**
@@ -544,66 +590,73 @@ public class Shop {
 	/**
 	 * @return the isUsingStructuredPolicies
 	 */
-	public boolean isUsingStructuredPolicies() {
+	public Boolean isUsingStructuredPolicies() {
 		return isUsingStructuredPolicies;
 	}
 	/**
 	 * @param isUsingStructuredPolicies the isUsingStructuredPolicies to set
 	 */
-	public void setUsingStructuredPolicies(boolean isUsingStructuredPolicies) {
+	public void setUsingStructuredPolicies(Boolean isUsingStructuredPolicies) {
 		this.isUsingStructuredPolicies = isUsingStructuredPolicies;
 	}
 	/**
 	 * @return the hasOnboardedStructuredPolicies
 	 */
-	public boolean isHasOnboardedStructuredPolicies() {
+	public Boolean isHasOnboardedStructuredPolicies() {
 		return hasOnboardedStructuredPolicies;
 	}
 	/**
 	 * @param hasOnboardedStructuredPolicies the hasOnboardedStructuredPolicies to set
 	 */
-	public void setHasOnboardedStructuredPolicies(boolean hasOnboardedStructuredPolicies) {
+	public void setHasOnboardedStructuredPolicies(Boolean hasOnboardedStructuredPolicies) {
 		this.hasOnboardedStructuredPolicies = hasOnboardedStructuredPolicies;
 	}
 	/**
 	 * @return the hasUnStructuredPolicies
 	 */
-	public boolean isHasUnStructuredPolicies() {
+	public Boolean isHasUnStructuredPolicies() {
 		return hasUnStructuredPolicies;
 	}
 	/**
 	 * @param hasUnStructuredPolicies the hasUnStructuredPolicies to set
 	 */
-	public void setHasUnStructuredPolicies(boolean hasUnStructuredPolicies) {
+	public void setHasUnStructuredPolicies(Boolean hasUnStructuredPolicies) {
 		this.hasUnStructuredPolicies = hasUnStructuredPolicies;
 	}
 
 	/**
 	*Finds all Shops. If there is a keywords parameter, finds shops with shop_name starting with keywords.
 	*/
+	@JsonIgnore
 	public static void getAllShops(){EtsyService.getService("/shops");}
 	/**
 	*Retrieves a Shop by id.
 	*/
+	@JsonIgnore
 	public static void getShop(String shopId){EtsyService.getService("/shops/"+shopId);}
 	/**
 	*Updates a Shop
 	*/
+	@JsonIgnore
 	public void updateShop(String shopId){EtsyService.putService("/shops/"+shopId, this);}
 	/**
 	*Upload a new shop banner image
 	*/
+	@JsonIgnore
 	public void uploadShopBanner(String shopId){EtsyService.postService("/shops/"+shopId+"/appearance/banner", this);}
 	/**
 	*Deletes a shop banner image
 	*/
+	@JsonIgnore
 	public static void deleteShopBanner(String shopId){EtsyService.deleteService("/shops/"+shopId+"/appearance/banner");}
 	/**
 	*Retrieves a shop by a listing id.
 	*/
-	public static void getListingShop(int listingId){EtsyService.getService("/shops/listing/"+listingId);}
+	@JsonIgnore
+	public static void getListingShop(Integer listingId){EtsyService.getService("/shops/listing/"+listingId);}
 	/**
 	*Retrieves a set of Shop objects associated to a User.
 	*/
+	@JsonIgnore
 	public static void getAllUserShops(String userId){EtsyService.getService("/users/"+userId+"/shops");}
 }

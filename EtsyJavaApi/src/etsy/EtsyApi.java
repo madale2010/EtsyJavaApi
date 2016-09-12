@@ -3,7 +3,7 @@ package etsy;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.scribejava.core.builder.api.DefaultApi10a;
 import com.github.scribejava.core.model.OAuth1RequestToken;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class EtsyApi extends DefaultApi10a {
 
 	private static final String AUTHORIZE_URL = "https://www.etsy.com/oauth/signin";

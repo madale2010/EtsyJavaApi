@@ -1,54 +1,79 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class UserProfile {
-	private int userProfileId ;
-	private int userId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class UserProfile extends EtsyService {
+	@JsonProperty("user_profile_id")
+	private Integer userProfileId ;
+	@JsonProperty("user_id")
+	private Integer userId;
+	@JsonProperty("login_name")
 	private String loginName;
+	@JsonProperty("bio")
 	private String bio;
+	@JsonProperty("gender")
 	private String gender;
+	@JsonProperty("birth_month")
 	private String birthMonth;
+	@JsonProperty("birth_day")
 	private String birthDay;
+	@JsonProperty("birth_year")
 	private String birthYear;
-	private float joinTsz;
+	@JsonProperty("join_tsz")
+	private Float joinTsz;
+	@JsonProperty("materials")
 	private String materials;
-	private int countryId;
+	@JsonProperty("country_id")
+	private Integer countryId;
+	@JsonProperty("region")
 	private String region;
+	@JsonProperty("city")
 	private String city;
-	private String location ;
-	private int avatarId;
-	private float lat;
-	private float lon;
-	private int transaction_buyCount;
-	private int transactionSoldCount;
-	private boolean isSeller;
+	@JsonProperty("location")
+	private String location;
+	@JsonProperty("avatar_id")
+	private Integer avatarId;
+	@JsonProperty("lat")
+	private Float lat;
+	@JsonProperty("lon")
+	private Float lon;
+	@JsonProperty("transaction_buy_count")
+	private Integer transaction_buyCount;
+	@JsonProperty("transaction_sold_count")
+	private Integer transactionSoldCount;
+	@JsonProperty("is_seller")
+	private Boolean isSeller;
+	@JsonProperty("image_url_75x75")
 	private String imageUrl75x75;
+	@JsonProperty("first_name")
 	private String firstName;
+	@JsonProperty("last_name")
 	private String lastName;
 	/**
 	 * @return the userProfileId
 	 */
-	public int getUserProfileId() {
+	public Integer getUserProfileId() {
 		return userProfileId;
 	}
 	/**
 	 * @param userProfileId the userProfileId to set
 	 */
-	public void setUserProfileId(int userProfileId) {
+	public void setUserProfileId(Integer userProfileId) {
 		this.userProfileId = userProfileId;
 	}
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	/**
@@ -126,13 +151,13 @@ public class UserProfile {
 	/**
 	 * @return the joinTsz
 	 */
-	public float getJoinTsz() {
+	public Float getJoinTsz() {
 		return joinTsz;
 	}
 	/**
 	 * @param joinTsz the joinTsz to set
 	 */
-	public void setJoinTsz(float joinTsz) {
+	public void setJoinTsz(Float joinTsz) {
 		this.joinTsz = joinTsz;
 	}
 	/**
@@ -150,13 +175,13 @@ public class UserProfile {
 	/**
 	 * @return the countryId
 	 */
-	public int getCountryId() {
+	public Integer getCountryId() {
 		return countryId;
 	}
 	/**
 	 * @param countryId the countryId to set
 	 */
-	public void setCountryId(int countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	/**
@@ -198,73 +223,73 @@ public class UserProfile {
 	/**
 	 * @return the avatarId
 	 */
-	public int getAvatarId() {
+	public Integer getAvatarId() {
 		return avatarId;
 	}
 	/**
 	 * @param avatarId the avatarId to set
 	 */
-	public void setAvatarId(int avatarId) {
+	public void setAvatarId(Integer avatarId) {
 		this.avatarId = avatarId;
 	}
 	/**
 	 * @return the lat
 	 */
-	public float getLat() {
+	public Float getLat() {
 		return lat;
 	}
 	/**
 	 * @param lat the lat to set
 	 */
-	public void setLat(float lat) {
+	public void setLat(Float lat) {
 		this.lat = lat;
 	}
 	/**
 	 * @return the lon
 	 */
-	public float getLon() {
+	public Float getLon() {
 		return lon;
 	}
 	/**
 	 * @param lon the lon to set
 	 */
-	public void setLon(float lon) {
+	public void setLon(Float lon) {
 		this.lon = lon;
 	}
 	/**
 	 * @return the transaction_buyCount
 	 */
-	public int getTransaction_buyCount() {
+	public Integer getTransaction_buyCount() {
 		return transaction_buyCount;
 	}
 	/**
 	 * @param transaction_buyCount the transaction_buyCount to set
 	 */
-	public void setTransaction_buyCount(int transaction_buyCount) {
+	public void setTransaction_buyCount(Integer transaction_buyCount) {
 		this.transaction_buyCount = transaction_buyCount;
 	}
 	/**
 	 * @return the transactionSoldCount
 	 */
-	public int getTransactionSoldCount() {
+	public Integer getTransactionSoldCount() {
 		return transactionSoldCount;
 	}
 	/**
 	 * @param transactionSoldCount the transactionSoldCount to set
 	 */
-	public void setTransactionSoldCount(int transactionSoldCount) {
+	public void setTransactionSoldCount(Integer transactionSoldCount) {
 		this.transactionSoldCount = transactionSoldCount;
 	}
 	/**
 	 * @return the isSeller
 	 */
-	public boolean isSeller() {
+	public Boolean isSeller() {
 		return isSeller;
 	}
 	/**
 	 * @param isSeller the isSeller to set
 	 */
-	public void setSeller(boolean isSeller) {
+	public void setSeller(Boolean isSeller) {
 		this.isSeller = isSeller;
 	}
 	/**
@@ -306,6 +331,7 @@ public class UserProfile {
 	/**
 	*Returns the UserProfile object associated with a User.
 	*/
+	@JsonIgnore
 	public static void findUserProfile(String userId){EtsyService.getService("/users/"+userId+"/profile");}
 	/**
 	*	Updates the UserProfile object associated with a User. 
@@ -313,5 +339,6 @@ public class UserProfile {
 			Name changes are subject to admin review and therefore unavailable via the API.
 			Materials must be provided as a period-separated list of ASCII words.
 	*/
+	@JsonIgnore
 	public void updateUserProfile(String userId){EtsyService.putService("/users/"+userId+"/profile", this);}
 }

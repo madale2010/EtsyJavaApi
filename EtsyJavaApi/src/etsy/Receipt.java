@@ -1,124 +1,185 @@
 package etsy;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.ArrayList;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Receipt {
-	private int receiptId;
-	private int receiptType;
-	private int orderId;
-	private int sellerUserId;
-	private int buyerUserId;
-	private float creationTsz;
-	private float lastModifiedTsz;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Receipt extends EtsyService {
+	@JsonProperty("receipt_id")
+	private Integer receiptId;
+	@JsonProperty("receipt_type")
+	private Integer receiptType;
+	@JsonProperty("order_id")
+	private Integer orderId;
+	@JsonProperty("seller_user_id")
+	private Integer sellerUserId;
+	@JsonProperty("buyer_user_id")
+	private Integer buyerUserId;
+	@JsonProperty("creation_tsz")
+	private Float creationTsz;
+	@JsonProperty("last_modified_tsz")
+	private Float lastModifiedTsz;
+	@JsonProperty("name")
 	private String name;
-	private String first_line;
-	private String second_line;
+	@JsonProperty("first_line")
+	private String firstLine;
+	@JsonProperty("second_line")
+	private String secondLine;
+	@JsonProperty("city")
 	private String city;
+	@JsonProperty("state")
 	private String state;
+	@JsonProperty("zip")
 	private String zip;
-	private int countryId;
+	@JsonProperty("country_id")
+	private Integer countryId;
+	@JsonProperty("payment_method")
 	private String paymentMethod;
+	@JsonProperty("payment_email")
 	private String paymentEmail;
+	@JsonProperty("message_from_seller")
 	private String messageFromSeller;
+	@JsonProperty("message_from_buyer")
 	private String messageFrom_buyer;
-	private boolean wasPaid;
-	private float totalTaxCost;
-	private float totalVatCost;
-	private float totalPrice;
-	private float totalShippingCost;
+	@JsonProperty("was_paid")
+	private Boolean wasPaid;
+	@JsonProperty("total_tax_cost")
+	private Float totalTaxCost;
+	@JsonProperty("total_vat_cost")
+	private Float totalVatCost;
+	@JsonProperty("total_price")
+	private Float totalPrice;
+	@JsonProperty("total_shipping_cost")
+	private Float totalShippingCost;
+	@JsonProperty("currency_code")
 	private String currencyCode;
+	@JsonProperty("message_from_payment")
 	private String messageFromPayment;
-	private boolean wasShipped;
+	@JsonProperty("was_shipped")
+	private Boolean wasShipped;
+	@JsonProperty("buyer_email")
 	private String buyerEmail;
+	@JsonProperty("seller_email")
 	private String sellerEmail;
-	private float discountAmt;
-	private float subtotal;
-	private float grandtotal;
-	private float adjustedGrandtotal;
-	private String shippingTrackingCode;
+	@JsonProperty("discount_amt")
+	private Float discountAmt;
+	@JsonProperty("subtotal")
+	private Float subtotal;
+	@JsonProperty("grandtotal")
+	private Float grandtotal;
+	@JsonProperty("adjusted_grandtotal")
+	private Float adjustedGrandtotal;
+	@JsonProperty("shipping")
+	private ArrayList<ReceiptShipment> shipping;
+	/**
+	 * @return the shipping
+	 */
+	public ArrayList<ReceiptShipment> getShipping() {
+		return shipping;
+	}
+	/**
+	 * @param shipping the shipping to set
+	 */
+	public void setShipping(ArrayList<ReceiptShipment> shipping) {
+		this.shipping = shipping;
+	}
+	/**
+	 * @return the wasPaid
+	 */
+	public Boolean getWasPaid() {
+		return wasPaid;
+	}
+	/**
+	 * @return the wasShipped
+	 */
+	public Boolean getWasShipped() {
+		return wasShipped;
+	}
 	/**
 	 * @return the receiptId
 	 */
-	public int getReceiptId() {
+	public Integer getReceiptId() {
 		return receiptId;
 	}
 	/**
 	 * @param receiptId the receiptId to set
 	 */
-	public void setReceiptId(int receiptId) {
+	public void setReceiptId(Integer receiptId) {
 		this.receiptId = receiptId;
 	}
 	/**
 	 * @return the receiptType
 	 */
-	public int getReceiptType() {
+	public Integer getReceiptType() {
 		return receiptType;
 	}
 	/**
 	 * @param receiptType the receiptType to set
 	 */
-	public void setReceiptType(int receiptType) {
+	public void setReceiptType(Integer receiptType) {
 		this.receiptType = receiptType;
 	}
 	/**
 	 * @return the orderId
 	 */
-	public int getOrderId() {
+	public Integer getOrderId() {
 		return orderId;
 	}
 	/**
 	 * @param orderId the orderId to set
 	 */
-	public void setOrderId(int orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	/**
 	 * @return the sellerUserId
 	 */
-	public int getSellerUserId() {
+	public Integer getSellerUserId() {
 		return sellerUserId;
 	}
 	/**
 	 * @param sellerUserId the sellerUserId to set
 	 */
-	public void setSellerUserId(int sellerUserId) {
+	public void setSellerUserId(Integer sellerUserId) {
 		this.sellerUserId = sellerUserId;
 	}
 	/**
 	 * @return the buyerUserId
 	 */
-	public int getBuyerUserId() {
+	public Integer getBuyerUserId() {
 		return buyerUserId;
 	}
 	/**
 	 * @param buyerUserId the buyerUserId to set
 	 */
-	public void setBuyerUserId(int buyerUserId) {
+	public void setBuyerUserId(Integer buyerUserId) {
 		this.buyerUserId = buyerUserId;
 	}
 	/**
 	 * @return the creationTsz
 	 */
-	public float getCreationTsz() {
+	public Float getCreationTsz() {
 		return creationTsz;
 	}
 	/**
 	 * @param creationTsz the creationTsz to set
 	 */
-	public void setCreationTsz(float creationTsz) {
+	public void setCreationTsz(Float creationTsz) {
 		this.creationTsz = creationTsz;
 	}
 	/**
 	 * @return the lastModifiedTsz
 	 */
-	public float getLastModifiedTsz() {
+	public Float getLastModifiedTsz() {
 		return lastModifiedTsz;
 	}
 	/**
 	 * @param lastModifiedTsz the lastModifiedTsz to set
 	 */
-	public void setLastModifiedTsz(float lastModifiedTsz) {
+	public void setLastModifiedTsz(Float lastModifiedTsz) {
 		this.lastModifiedTsz = lastModifiedTsz;
 	}
 	/**
@@ -134,28 +195,28 @@ public class Receipt {
 		this.name = name;
 	}
 	/**
-	 * @return the first_line
+	 * @return the firstLine
 	 */
-	public String getFirst_line() {
-		return first_line;
+	public String getFirstLine() {
+		return firstLine;
 	}
 	/**
-	 * @param first_line the first_line to set
+	 * @param firstLine the firstLine to set
 	 */
-	public void setFirst_line(String first_line) {
-		this.first_line = first_line;
+	public void setFirstLine(String firstLine) {
+		this.firstLine = firstLine;
 	}
 	/**
-	 * @return the second_line
+	 * @return the secondLine
 	 */
-	public String getSecond_line() {
-		return second_line;
+	public String getSecondLine() {
+		return secondLine;
 	}
 	/**
-	 * @param second_line the second_line to set
+	 * @param secondLine the secondLine to set
 	 */
-	public void setSecond_line(String second_line) {
-		this.second_line = second_line;
+	public void setSecondLine(String secondLine) {
+		this.secondLine = secondLine;
 	}
 	/**
 	 * @return the city
@@ -196,13 +257,13 @@ public class Receipt {
 	/**
 	 * @return the countryId
 	 */
-	public int getCountryId() {
+	public Integer getCountryId() {
 		return countryId;
 	}
 	/**
 	 * @param countryId the countryId to set
 	 */
-	public void setCountryId(int countryId) {
+	public void setCountryId(Integer countryId) {
 		this.countryId = countryId;
 	}
 	/**
@@ -256,61 +317,61 @@ public class Receipt {
 	/**
 	 * @return the wasPaid
 	 */
-	public boolean isWasPaid() {
+	public Boolean isWasPaid() {
 		return wasPaid;
 	}
 	/**
 	 * @param wasPaid the wasPaid to set
 	 */
-	public void setWasPaid(boolean wasPaid) {
+	public void setWasPaid(Boolean wasPaid) {
 		this.wasPaid = wasPaid;
 	}
 	/**
 	 * @return the totalTaxCost
 	 */
-	public float getTotalTaxCost() {
+	public Float getTotalTaxCost() {
 		return totalTaxCost;
 	}
 	/**
 	 * @param totalTaxCost the totalTaxCost to set
 	 */
-	public void setTotalTaxCost(float totalTaxCost) {
+	public void setTotalTaxCost(Float totalTaxCost) {
 		this.totalTaxCost = totalTaxCost;
 	}
 	/**
 	 * @return the totalVatCost
 	 */
-	public float getTotalVatCost() {
+	public Float getTotalVatCost() {
 		return totalVatCost;
 	}
 	/**
 	 * @param totalVatCost the totalVatCost to set
 	 */
-	public void setTotalVatCost(float totalVatCost) {
+	public void setTotalVatCost(Float totalVatCost) {
 		this.totalVatCost = totalVatCost;
 	}
 	/**
 	 * @return the totalPrice
 	 */
-	public float getTotalPrice() {
+	public Float getTotalPrice() {
 		return totalPrice;
 	}
 	/**
 	 * @param totalPrice the totalPrice to set
 	 */
-	public void setTotalPrice(float totalPrice) {
+	public void setTotalPrice(Float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 	/**
 	 * @return the totalShippingCost
 	 */
-	public float getTotalShippingCost() {
+	public Float getTotalShippingCost() {
 		return totalShippingCost;
 	}
 	/**
 	 * @param totalShippingCost the totalShippingCost to set
 	 */
-	public void setTotalShippingCost(float totalShippingCost) {
+	public void setTotalShippingCost(Float totalShippingCost) {
 		this.totalShippingCost = totalShippingCost;
 	}
 	/**
@@ -340,13 +401,13 @@ public class Receipt {
 	/**
 	 * @return the wasShipped
 	 */
-	public boolean isWasShipped() {
+	public Boolean isWasShipped() {
 		return wasShipped;
 	}
 	/**
 	 * @param wasShipped the wasShipped to set
 	 */
-	public void setWasShipped(boolean wasShipped) {
+	public void setWasShipped(Boolean wasShipped) {
 		this.wasShipped = wasShipped;
 	}
 	/**
@@ -376,94 +437,91 @@ public class Receipt {
 	/**
 	 * @return the discountAmt
 	 */
-	public float getDiscountAmt() {
+	public Float getDiscountAmt() {
 		return discountAmt;
 	}
 	/**
 	 * @param discountAmt the discountAmt to set
 	 */
-	public void setDiscountAmt(float discountAmt) {
+	public void setDiscountAmt(Float discountAmt) {
 		this.discountAmt = discountAmt;
 	}
 	/**
 	 * @return the subtotal
 	 */
-	public float getSubtotal() {
+	public Float getSubtotal() {
 		return subtotal;
 	}
 	/**
 	 * @param subtotal the subtotal to set
 	 */
-	public void setSubtotal(float subtotal) {
+	public void setSubtotal(Float subtotal) {
 		this.subtotal = subtotal;
 	}
 	/**
 	 * @return the grandtotal
 	 */
-	public float getGrandtotal() {
+	public Float getGrandtotal() {
 		return grandtotal;
 	}
 	/**
 	 * @param grandtotal the grandtotal to set
 	 */
-	public void setGrandtotal(float grandtotal) {
+	public void setGrandtotal(Float grandtotal) {
 		this.grandtotal = grandtotal;
 	}
 	/**
 	 * @return the adjustedGrandtotal
 	 */
-	public float getAdjustedGrandtotal() {
+	public Float getAdjustedGrandtotal() {
 		return adjustedGrandtotal;
 	}
 	/**
 	 * @param adjustedGrandtotal the adjustedGrandtotal to set
 	 */
-	public void setAdjustedGrandtotal(float adjustedGrandtotal) {
+	public void setAdjustedGrandtotal(Float adjustedGrandtotal) {
 		this.adjustedGrandtotal = adjustedGrandtotal;
 	}
-	/**
-	 * @return the shippingTrackingCode
-	 */
-	public String getShippingTrackingCode() {
-		return shippingTrackingCode;
-	}
-	/**
-	 * @param shippingTrackingCode the shippingTrackingCode to set
-	 */
-	public void setShippingTrackingCode(String shippingTrackingCode) {
-		this.shippingTrackingCode = shippingTrackingCode;
-	}
+
 	/**
 	*Retrieves a Shop_Receipt2 by id.
 	*/
-	public static void getShop_Receipt2(int receiptId){EtsyService.getService("/receipts/"+receiptId);}
+	@JsonIgnore
+	public static void getShop_Receipt2(Integer receiptId){EtsyService.getService("/receipts/"+receiptId);}
 	/**
 	*Updates a Shop_Receipt2
 	*/
-	public void updateReceipt(int receiptId){EtsyService.putService("/receipts/"+receiptId, this);}
+	@JsonIgnore
+	public void updateReceipt(Integer receiptId){EtsyService.putService("/receipts/"+receiptId, this);}
 	/**
 	*Retrieves a set of Receipt objects associated to a Shop.
 	*/
+	@JsonIgnore
 	public void getAllShopReceipts(String shopId){EtsyService.putService("/shops/"+shopId+"/receipts", this);}
 	/**
 	*Submits tracking information and sends a shipping notification email to the buyer. If send_bcc is true, the shipping notification will be sent to the seller as well. Refer to additional documentation.
 	*/
+	@JsonIgnore
 	public void submitTracking(String shopId, int receiptId){EtsyService.postService("/shops/"+shopId+"/receipts/"+receiptId+"/tracking", this);}
 	/**
 	*Retrieves a set of Receipt objects associated to a Shop based on the status.
 	*/
+	@JsonIgnore
 	public static void getAllShopReceiptsByStatus(String shopId, String status){EtsyService.getService("/shops/"+shopId+"/receipts/"+status);}
 	/**
 	*Retrieves a set of open Local Delivery Receipt objects associated to a Shop.
 	*/
+	@JsonIgnore
 	public static void getAllOpenLocalDeliveryReceipts(String shopId){EtsyService.getService("/shops/"+shopId+"/receipts/local-delivery");}
 	/**
 	*Searches the set of Receipt objects associated to a Shop by a query
 	*/
+	@JsonIgnore
 	public static void searchAllShopReceipts(String shopId){EtsyService.getService("/shops/"+shopId+"/receipts/search");}
 	/**
 	*Retrieves a set of Receipt objects associated to a User.
 	*/
+	@JsonIgnore
 	public static void getAllUserBuyerReceipts(String userId){EtsyService.getService("/users/"+userId+"/receipts");}
 
 }

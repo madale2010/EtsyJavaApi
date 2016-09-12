@@ -1,186 +1,211 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Payment {
-	private int paymentId;
-	private int buyerUserId;
-	private int shopId;
-	private int receiptId;
-	private int amountGross;
-	private int amountFees;
-	private int amountNet;
-	private int postedGross;
-	private int postedFees;
-	private int postedNet;
-	private int adjustedGross;
-	private int adjustedFees;
-	private int adjustedNet;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Payment extends EtsyService {
+	@JsonProperty("payment_id")
+	private Integer paymentId;
+	@JsonProperty("buyer_user_id")
+	private Integer buyerUserId;
+	@JsonProperty("shop_id")
+	private Integer shopId;
+	@JsonProperty("receipt_id")
+	private Integer receiptId;
+	@JsonProperty("amount_gross")
+	private Integer amountGross;
+	@JsonProperty("amount_fees")
+	private Integer amountFees;
+	@JsonProperty("amount_net")
+	private Integer amountNet;
+	@JsonProperty("posted_gross")
+	private Integer postedGross;
+	@JsonProperty("posted_fees")
+	private Integer postedFees;
+	@JsonProperty("posted_net")
+	private Integer postedNet;
+	@JsonProperty("adjusted_gross")
+	private Integer adjustedGross;
+	@JsonProperty("adjusted_fees")
+	private Integer adjustedFees;
+	@JsonProperty("adjusted_net")
+	private Integer adjustedNet;
+	@JsonProperty("currency")
 	private String currency;
+	@JsonProperty("shop_currency")
 	private String shopCurrency;
+	@JsonProperty("buyer_currency")
 	private String buyerCurrency;
-	private int shippingUserId;
-	private int shippingAddressId;
-	private int billingAddressId;
+	@JsonProperty("shipping_user_id")
+	private Integer shippingUserId;
+	@JsonProperty("shipping_address_id")
+	private Integer shippingAddressId;
+	@JsonProperty("billing_address_id")
+	private Integer billingAddressId;
+	@JsonProperty("status")
 	private String status;
-	private int shippedDate;
-	private int createDate;
-	private int updateDate;
+	@JsonProperty("shipped_date")
+	private Integer shippedDate;
+	@JsonProperty("create_date")
+	private Integer createDate;
+	@JsonProperty("update_date")
+	private Integer updateDate;
 	/**
 	 * @return the paymentId
 	 */
-	public int getPaymentId() {
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 	/**
 	 * @param paymentId the paymentId to set
 	 */
-	public void setPaymentId(int paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 	/**
 	 * @return the buyerUserId
 	 */
-	public int getBuyerUserId() {
+	public Integer getBuyerUserId() {
 		return buyerUserId;
 	}
 	/**
 	 * @param buyerUserId the buyerUserId to set
 	 */
-	public void setBuyerUserId(int buyerUserId) {
+	public void setBuyerUserId(Integer buyerUserId) {
 		this.buyerUserId = buyerUserId;
 	}
 	/**
 	 * @return the shopId
 	 */
-	public int getShopId() {
+	public Integer getShopId() {
 		return shopId;
 	}
 	/**
 	 * @param shopId the shopId to set
 	 */
-	public void setShopId(int shopId) {
+	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
 	/**
 	 * @return the receiptId
 	 */
-	public int getReceiptId() {
+	public Integer getReceiptId() {
 		return receiptId;
 	}
 	/**
 	 * @param receiptId the receiptId to set
 	 */
-	public void setReceiptId(int receiptId) {
+	public void setReceiptId(Integer receiptId) {
 		this.receiptId = receiptId;
 	}
 	/**
 	 * @return the amountGross
 	 */
-	public int getAmountGross() {
+	public Integer getAmountGross() {
 		return amountGross;
 	}
 	/**
 	 * @param amountGross the amountGross to set
 	 */
-	public void setAmountGross(int amountGross) {
+	public void setAmountGross(Integer amountGross) {
 		this.amountGross = amountGross;
 	}
 	/**
 	 * @return the amountFees
 	 */
-	public int getAmountFees() {
+	public Integer getAmountFees() {
 		return amountFees;
 	}
 	/**
 	 * @param amountFees the amountFees to set
 	 */
-	public void setAmountFees(int amountFees) {
+	public void setAmountFees(Integer amountFees) {
 		this.amountFees = amountFees;
 	}
 	/**
 	 * @return the amountNet
 	 */
-	public int getAmountNet() {
+	public Integer getAmountNet() {
 		return amountNet;
 	}
 	/**
 	 * @param amountNet the amountNet to set
 	 */
-	public void setAmountNet(int amountNet) {
+	public void setAmountNet(Integer amountNet) {
 		this.amountNet = amountNet;
 	}
 	/**
 	 * @return the postedGross
 	 */
-	public int getPostedGross() {
+	public Integer getPostedGross() {
 		return postedGross;
 	}
 	/**
 	 * @param postedGross the postedGross to set
 	 */
-	public void setPostedGross(int postedGross) {
+	public void setPostedGross(Integer postedGross) {
 		this.postedGross = postedGross;
 	}
 	/**
 	 * @return the postedFees
 	 */
-	public int getPostedFees() {
+	public Integer getPostedFees() {
 		return postedFees;
 	}
 	/**
 	 * @param postedFees the postedFees to set
 	 */
-	public void setPostedFees(int postedFees) {
+	public void setPostedFees(Integer postedFees) {
 		this.postedFees = postedFees;
 	}
 	/**
 	 * @return the postedNet
 	 */
-	public int getPostedNet() {
+	public Integer getPostedNet() {
 		return postedNet;
 	}
 	/**
 	 * @param postedNet the postedNet to set
 	 */
-	public void setPostedNet(int postedNet) {
+	public void setPostedNet(Integer postedNet) {
 		this.postedNet = postedNet;
 	}
 	/**
 	 * @return the adjustedGross
 	 */
-	public int getAdjustedGross() {
+	public Integer getAdjustedGross() {
 		return adjustedGross;
 	}
 	/**
 	 * @param adjustedGross the adjustedGross to set
 	 */
-	public void setAdjustedGross(int adjustedGross) {
+	public void setAdjustedGross(Integer adjustedGross) {
 		this.adjustedGross = adjustedGross;
 	}
 	/**
 	 * @return the adjustedFees
 	 */
-	public int getAdjustedFees() {
+	public Integer getAdjustedFees() {
 		return adjustedFees;
 	}
 	/**
 	 * @param adjustedFees the adjustedFees to set
 	 */
-	public void setAdjustedFees(int adjustedFees) {
+	public void setAdjustedFees(Integer adjustedFees) {
 		this.adjustedFees = adjustedFees;
 	}
 	/**
 	 * @return the adjustedNet
 	 */
-	public int getAdjustedNet() {
+	public Integer getAdjustedNet() {
 		return adjustedNet;
 	}
 	/**
 	 * @param adjustedNet the adjustedNet to set
 	 */
-	public void setAdjustedNet(int adjustedNet) {
+	public void setAdjustedNet(Integer adjustedNet) {
 		this.adjustedNet = adjustedNet;
 	}
 	/**
@@ -222,37 +247,37 @@ public class Payment {
 	/**
 	 * @return the shippingUserId
 	 */
-	public int getShippingUserId() {
+	public Integer getShippingUserId() {
 		return shippingUserId;
 	}
 	/**
 	 * @param shippingUserId the shippingUserId to set
 	 */
-	public void setShippingUserId(int shippingUserId) {
+	public void setShippingUserId(Integer shippingUserId) {
 		this.shippingUserId = shippingUserId;
 	}
 	/**
 	 * @return the shippingAddressId
 	 */
-	public int getShippingAddressId() {
+	public Integer getShippingAddressId() {
 		return shippingAddressId;
 	}
 	/**
 	 * @param shippingAddressId the shippingAddressId to set
 	 */
-	public void setShippingAddressId(int shippingAddressId) {
+	public void setShippingAddressId(Integer shippingAddressId) {
 		this.shippingAddressId = shippingAddressId;
 	}
 	/**
 	 * @return the billingAddressId
 	 */
-	public int getBillingAddressId() {
+	public Integer getBillingAddressId() {
 		return billingAddressId;
 	}
 	/**
 	 * @param billingAddressId the billingAddressId to set
 	 */
-	public void setBillingAddressId(int billingAddressId) {
+	public void setBillingAddressId(Integer billingAddressId) {
 		this.billingAddressId = billingAddressId;
 	}
 	/**
@@ -270,50 +295,53 @@ public class Payment {
 	/**
 	 * @return the shippedDate
 	 */
-	public int getShippedDate() {
+	public Integer getShippedDate() {
 		return shippedDate;
 	}
 	/**
 	 * @param shippedDate the shippedDate to set
 	 */
-	public void setShippedDate(int shippedDate) {
+	public void setShippedDate(Integer shippedDate) {
 		this.shippedDate = shippedDate;
 	}
 	/**
 	 * @return the createDate
 	 */
-	public int getCreateDate() {
+	public Integer getCreateDate() {
 		return createDate;
 	}
 	/**
 	 * @param createDate the createDate to set
 	 */
-	public void setCreateDate(int createDate) {
+	public void setCreateDate(Integer createDate) {
 		this.createDate = createDate;
 	}
 	/**
 	 * @return the updateDate
 	 */
-	public int getUpdateDate() {
+	public Integer getUpdateDate() {
 		return updateDate;
 	}
 	/**
 	 * @param updateDate the updateDate to set
 	 */
-	public void setUpdateDate(int updateDate) {
+	public void setUpdateDate(Integer updateDate) {
 		this.updateDate = updateDate;
 	}
 	/**
 	*Get a Direct Checkout Payment
 	*/
-	public static void findPayment(int paymentId){EtsyService.getService("/payments/"+paymentId);}
+	@JsonIgnore
+	public static void findPayment(Integer paymentId){EtsyService.getService("/payments/"+paymentId);}
 	/**
 	*	Get a Payment from a Ledger Entry ID, if applicable
 	*/
+	@JsonIgnore
 	public static void findPaymentForLedgerEntry(String shopId, int ledgerEntryId){EtsyService.getService("/shops/"+shopId+"/ledger/entries/"+ledgerEntryId+"/payment");}
 	/**
 	*Get a Payment by Shop Receipt ID
 
 	*/
+	@JsonIgnore
 	public static void findShopPaymentByReceipt(String shopId, int receiptId){EtsyService.getService("/shops/"+shopId+"/receipts/"+receiptId+"/payments");}
 }

@@ -3,15 +3,23 @@ package etsy;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiMethod {
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("uri")
 	private String uri;
+	@JsonProperty("params")
 	private ArrayList<String> params;
+	@JsonProperty("defaults")
 	private ArrayList<String> defaults;
+	@JsonProperty("type")
 	private String type;
+	@JsonProperty("visibility")
 	private String visibility;
-	private String http_method;
+	@JsonProperty("http_method")
+	private String httpMethod;
 	/**
 	 * Get a list of all methods available.
 	 */
@@ -94,12 +102,12 @@ public class ApiMethod {
 	 * @return the http_method
 	 */
 	public String getHttp_method() {
-		return http_method;
+		return httpMethod;
 	}
 	/**
 	 * @param http_method the http_method to set
 	 */
-	public void setHttp_method(String http_method) {
-		this.http_method = http_method;
+	public void setHttp_method(String httpMethod) {
+		this.httpMethod = httpMethod;
 	}
 }

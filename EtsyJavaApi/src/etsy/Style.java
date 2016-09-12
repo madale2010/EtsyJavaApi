@@ -1,21 +1,25 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Style {
-	private int styleId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Style extends EtsyService {
+	@JsonProperty("style_id")
+	private Integer styleId;
+	@JsonProperty("style")
 	private String style;
 	/**
 	 * @return the styleId
 	 */
-	public int getStyleId() {
+	public Integer getStyleId() {
 		return styleId;
 	}
 	/**
 	 * @param styleId the styleId to set
 	 */
-	public void setStyleId(int styleId) {
+	public void setStyleId(Integer styleId) {
 		this.styleId = styleId;
 	}
 	/**
@@ -33,5 +37,6 @@ public class Style {
 	/**
 	*Retrieve all suggested styles.
 	*/
+	@JsonIgnore
 	public static void findSuggestedStyles(){EtsyService.getService("/taxonomy/styles");}
 }

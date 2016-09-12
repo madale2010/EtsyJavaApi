@@ -1,42 +1,57 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Avatar extends EtsyService {
-	private int avatarId;
+	@JsonProperty("avatar_id")
+	private Integer avatarId;
+	@JsonProperty("hex_code")
 	private String hexCode;
-	private int red;
-	private int green;
-	private int blue;
-	private int hue;
-	private int saturation;
-	private int brightness;
-	private boolean isBlackAndWhite;
-	private float creationTsz;
-	private int userId;
+	@JsonProperty("red")
+	private Integer red;
+	@JsonProperty("green")
+	private Integer green;
+	@JsonProperty("blue")
+	private Integer blue;
+	@JsonProperty("hue")
+	private Integer hue;
+	@JsonProperty("saturation")
+	private Integer saturation;
+	@JsonProperty("brightness")
+	private Integer brightness;
+	@JsonProperty("is_black_and_white")
+	private Boolean isBlackAndWhite;
+	@JsonProperty("creation_tsz")
+	private Float creationTsz;
+	@JsonProperty("user_id")
+	private Integer userId;
 	/**
 	 * Upload a new user avatar image
 	 */
+	@JsonIgnore
 	public void uploadAvatar(){
-		EtsyService.postService("/users/__SELF__/avatar/", this);
+		postService("/users/__SELF__/avatar/", this);
 	}
 	/**
 	 * Get avatar image source
 	 */
+	@JsonIgnore
 	public static String getAvatarImgSrc(){
 		return EtsyService.getService("/users/__SELF__/avatar/src");
 	}
 	/**
 	 * @return the avatarId
 	 */
-	public int getAvatarId() {
+	public Integer getAvatarId() {
 		return avatarId;
 	}
 	/**
 	 * @param avatarId the avatarId to set
 	 */
-	public void setAvatarId(int avatarId) {
+	public void setAvatarId(Integer avatarId) {
 		this.avatarId = avatarId;
 	}
 	/**
@@ -54,109 +69,109 @@ public class Avatar extends EtsyService {
 	/**
 	 * @return the red
 	 */
-	public int getRed() {
+	public Integer getRed() {
 		return red;
 	}
 	/**
 	 * @param red the red to set
 	 */
-	public void setRed(int red) {
+	public void setRed(Integer red) {
 		this.red = red;
 	}
 	/**
 	 * @return the green
 	 */
-	public int getGreen() {
+	public Integer getGreen() {
 		return green;
 	}
 	/**
 	 * @param green the green to set
 	 */
-	public void setGreen(int green) {
+	public void setGreen(Integer green) {
 		this.green = green;
 	}
 	/**
 	 * @return the blue
 	 */
-	public int getBlue() {
+	public Integer getBlue() {
 		return blue;
 	}
 	/**
 	 * @param blue the blue to set
 	 */
-	public void setBlue(int blue) {
+	public void setBlue(Integer blue) {
 		this.blue = blue;
 	}
 	/**
 	 * @return the hue
 	 */
-	public int getHue() {
+	public Integer getHue() {
 		return hue;
 	}
 	/**
 	 * @param hue the hue to set
 	 */
-	public void setHue(int hue) {
+	public void setHue(Integer hue) {
 		this.hue = hue;
 	}
 	/**
 	 * @return the saturation
 	 */
-	public int getSaturation() {
+	public Integer getSaturation() {
 		return saturation;
 	}
 	/**
 	 * @param saturation the saturation to set
 	 */
-	public void setSaturation(int saturation) {
+	public void setSaturation(Integer saturation) {
 		this.saturation = saturation;
 	}
 	/**
 	 * @return the brightness
 	 */
-	public int getBrightness() {
+	public Integer getBrightness() {
 		return brightness;
 	}
 	/**
 	 * @param brightness the brightness to set
 	 */
-	public void setBrightness(int brightness) {
+	public void setBrightness(Integer brightness) {
 		this.brightness = brightness;
 	}
 	/**
 	 * @return the isBlackAndWhite
 	 */
-	public boolean isBlackAndWhite() {
+	public Boolean isBlackAndWhite() {
 		return isBlackAndWhite;
 	}
 	/**
 	 * @param isBlackAndWhite the isBlackAndWhite to set
 	 */
-	public void setBlackAndWhite(boolean isBlackAndWhite) {
+	public void setBlackAndWhite(Boolean isBlackAndWhite) {
 		this.isBlackAndWhite = isBlackAndWhite;
 	}
 	/**
 	 * @return the creationTsz
 	 */
-	public float getCreationTsz() {
+	public Float getCreationTsz() {
 		return creationTsz;
 	}
 	/**
 	 * @param creationTsz the creationTsz to set
 	 */
-	public void setCreationTsz(float creationTsz) {
+	public void setCreationTsz(Float creationTsz) {
 		this.creationTsz = creationTsz;
 	}
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 }

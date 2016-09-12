@@ -2,11 +2,16 @@ package etsy;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class ImageType {
- private String code;
- private String desc;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ImageType extends EtsyService {
+ @JsonProperty("code")
+	private String code;
+ @JsonProperty("desc")
+	private String desc;
+ @JsonProperty("sizes")
  private ArrayList<String> sizes;
 /**
  * @return the code
@@ -48,5 +53,6 @@ public void setSizes(ArrayList<String> sizes) {
 *Lists available image types along with their supported sizes.
 
 */
+@JsonIgnore
 public static void listImageTypes(){EtsyService.getService("/image_types");}
 }

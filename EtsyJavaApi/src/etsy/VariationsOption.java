@@ -1,25 +1,32 @@
 package etsy;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class VariationsOption {
-	private int valueId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VariationsOption extends EtsyService {
+	@JsonProperty("value_id")
+	private Integer valueId;
+	@JsonProperty("value")
 	private String value;
+	@JsonProperty("formatted_value")
 	private String formattedValue;
-	private boolean isAvailable;
-	private int priceDiff;
-	private int price;
+	@JsonProperty("is_available")
+	private Boolean isAvailable;
+	@JsonProperty("price_diff")
+	private Integer priceDiff;
+	@JsonProperty("price")
+	private Integer price;
 	/**
 	 * @return the valueId
 	 */
-	public int getValueId() {
+	public Integer getValueId() {
 		return valueId;
 	}
 	/**
 	 * @param valueId the valueId to set
 	 */
-	public void setValueId(int valueId) {
+	public void setValueId(Integer valueId) {
 		this.valueId = valueId;
 	}
 	/**
@@ -49,37 +56,37 @@ public class VariationsOption {
 	/**
 	 * @return the isAvailable
 	 */
-	public boolean isAvailable() {
+	public Boolean isAvailable() {
 		return isAvailable;
 	}
 	/**
 	 * @param isAvailable the isAvailable to set
 	 */
-	public void setAvailable(boolean isAvailable) {
+	public void setAvailable(Boolean isAvailable) {
 		this.isAvailable = isAvailable;
 	}
 	/**
 	 * @return the priceDiff
 	 */
-	public int getPriceDiff() {
+	public Integer getPriceDiff() {
 		return priceDiff;
 	}
 	/**
 	 * @param priceDiff the priceDiff to set
 	 */
-	public void setPriceDiff(int priceDiff) {
+	public void setPriceDiff(Integer priceDiff) {
 		this.priceDiff = priceDiff;
 	}
 	/**
 	 * @return the price
 	 */
-	public int getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
 	/**
 	 * @param price the price to set
 	 */
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	

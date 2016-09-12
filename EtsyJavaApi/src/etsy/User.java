@@ -1,27 +1,37 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User extends EtsyService {
-	private int userId;
+	@JsonProperty("user_id")
+	private Integer userId;
+	@JsonProperty("login_name")
 	private String loginName;
+	@JsonProperty("primary_email")
 	private String primaryEmail;
-	private float creationTsz;
+	@JsonProperty("creation_tsz")
+	private Float creationTsz;
+	@JsonProperty("user_pub_key")
 	private String userPubKey;
-	private int referredByUserId;
+	@JsonProperty("referred_by_user_id")
+	private Integer referredByUserId;
+	@JsonProperty("feedback_info")
 	private FeedbackInfo feedbackInfo;
-	private int awaitingFeedbackCount;
+	@JsonProperty("awaiting_feedback_count")
+	private Integer awaitingFeedbackCount;
 	/**
 	 * The user's numeric ID. This is also valid as the user's shop ID.
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	/**
@@ -54,13 +64,13 @@ public class User extends EtsyService {
 	 * The date and time the user was created, in epoch seconds.
 	 * @return the creationTsz
 	 */
-	public float getCreationTsz() {
+	public Float getCreationTsz() {
 		return creationTsz;
 	}
 	/**
 	 * @param creationTsz the creationTsz to set
 	 */
-	public void setCreationTsz(float creationTsz) {
+	public void setCreationTsz(Float creationTsz) {
 		this.creationTsz = creationTsz;
 	}
 	/**
@@ -81,14 +91,14 @@ public class User extends EtsyService {
 	 * The numeric ID of the user that referred this user.
 	 * @return the referredByUserId
 	 */
-	public int getReferredByUserId() {
+	public Integer getReferredByUserId() {
 		return referredByUserId;
 	}
 	/**
 	 * An associative array of feedback totals for the user.
 	 * @param referredByUserId the referredByUserId to set
 	 */
-	public void setReferredByUserId(int referredByUserId) {
+	public void setReferredByUserId(Integer referredByUserId) {
 		this.referredByUserId = referredByUserId;
 	}
 	/**
@@ -107,15 +117,16 @@ public class User extends EtsyService {
 	/**
 	 * @return the awaitingFeedbackCount
 	 */
-	public int getAwaitingFeedbackCount() {
+	public Integer getAwaitingFeedbackCount() {
 		return awaitingFeedbackCount;
 	}
 	/**
 	 * @param awaitingFeedbackCount the awaitingFeedbackCount to set
 	 */
-	public void setAwaitingFeedbackCount(int awaitingFeedbackCount) {
+	public void setAwaitingFeedbackCount(Integer awaitingFeedbackCount) {
 		this.awaitingFeedbackCount = awaitingFeedbackCount;
 	}
+	@JsonIgnore
 	public void getUser(String userId){
 	EtsyService.getService("users//"+userId);
 		
@@ -129,30 +140,37 @@ public class User extends EtsyService {
 	 * @param page
 	 * @return results
 	 */
+	@JsonIgnore
 	public String getAllUsers(String keywords, int limit, int offset, int page){
 	return EtsyService.getService("/users");
 
 	}
+	@JsonIgnore
 	public void getAllUsersForTeam() {
 		EtsyService.getService("users//"+userId);
 	
 	}
+	@JsonIgnore
 	public void getCirclesContainingUser() {
 	EtsyService.getService("users//"+userId);
 	
 	}
+	@JsonIgnore
 	public void getConnectedUser() {
 	EtsyService.getService("users//"+userId);
 	
 	}
+	@JsonIgnore
 	public void unconnectUsers() {
 		EtsyService.getService("users//"+userId);
 	
 	}
+	@JsonIgnore
 	public void getConnectedUsers() {
 	EtsyService.getService("users//"+userId);
 
 	}
+	@JsonIgnore
 	public void connectUsers() {
 		EtsyService.getService("users//"+userId);
 	

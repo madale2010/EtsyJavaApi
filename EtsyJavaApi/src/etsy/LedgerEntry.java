@@ -1,76 +1,87 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class LedgerEntry {
- private int ledgerEntryId;
- private int ledgerId;
- private int sequence;
- private int creditAmount;
- private int debitAmount;
- private String entryType;
- private int referenceId;
- private int runningBalance;
- private int createDate;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class LedgerEntry extends EtsyService {
+ @JsonProperty("ledger_entry_id")
+	private Integer ledgerEntryId;
+ @JsonProperty("ledger_id")
+	private Integer ledgerId;
+ @JsonProperty("sequence")
+	private Integer sequence;
+ @JsonProperty("credit_amount")
+	private Integer creditAmount;
+ @JsonProperty("debit_amount")
+	private Integer debitAmount;
+ @JsonProperty("entry_type")
+	private String entryType;
+ @JsonProperty("reference_id")
+	private Integer referenceId;
+ @JsonProperty("running_balance")
+	private Integer runningBalance;
+ @JsonProperty("create_date")
+	private Integer createDate;
 /**
  * @return the ledgerEntryId
  */
-public int getLedgerEntryId() {
+public Integer getLedgerEntryId() {
 	return ledgerEntryId;
 }
 /**
  * @param ledgerEntryId the ledgerEntryId to set
  */
-public void setLedgerEntryId(int ledgerEntryId) {
+public void setLedgerEntryId(Integer ledgerEntryId) {
 	this.ledgerEntryId = ledgerEntryId;
 }
 /**
  * @return the ledgerId
  */
-public int getLedgerId() {
+public Integer getLedgerId() {
 	return ledgerId;
 }
 /**
  * @param ledgerId the ledgerId to set
  */
-public void setLedgerId(int ledgerId) {
+public void setLedgerId(Integer ledgerId) {
 	this.ledgerId = ledgerId;
 }
 /**
  * @return the sequence
  */
-public int getSequence() {
+public Integer getSequence() {
 	return sequence;
 }
 /**
  * @param sequence the sequence to set
  */
-public void setSequence(int sequence) {
+public void setSequence(Integer sequence) {
 	this.sequence = sequence;
 }
 /**
  * @return the creditAmount
  */
-public int getCreditAmount() {
+public Integer getCreditAmount() {
 	return creditAmount;
 }
 /**
  * @param creditAmount the creditAmount to set
  */
-public void setCreditAmount(int creditAmount) {
+public void setCreditAmount(Integer creditAmount) {
 	this.creditAmount = creditAmount;
 }
 /**
  * @return the debitAmount
  */
-public int getDebitAmount() {
+public Integer getDebitAmount() {
 	return debitAmount;
 }
 /**
  * @param debitAmount the debitAmount to set
  */
-public void setDebitAmount(int debitAmount) {
+public void setDebitAmount(Integer debitAmount) {
 	this.debitAmount = debitAmount;
 }
 /**
@@ -88,45 +99,47 @@ public void setEntryType(String entryType) {
 /**
  * @return the referenceId
  */
-public int getReferenceId() {
+public Integer getReferenceId() {
 	return referenceId;
 }
 /**
  * @param referenceId the referenceId to set
  */
-public void setReferenceId(int referenceId) {
+public void setReferenceId(Integer referenceId) {
 	this.referenceId = referenceId;
 }
 /**
  * @return the runningBalance
  */
-public int getRunningBalance() {
+public Integer getRunningBalance() {
 	return runningBalance;
 }
 /**
  * @param runningBalance the runningBalance to set
  */
-public void setRunningBalance(int runningBalance) {
+public void setRunningBalance(Integer runningBalance) {
 	this.runningBalance = runningBalance;
 }
 /**
  * @return the createDate
  */
-public int getCreateDate() {
+public Integer getCreateDate() {
 	return createDate;
 }
 /**
  * @param createDate the createDate to set
  */
-public void setCreateDate(int createDate) {
+public void setCreateDate(Integer createDate) {
 	this.createDate = createDate;
 }
 /**
 *Get a Shop Payment Account Ledger's Entries
 */
+@JsonIgnore
 public static void findLedgerEntries(String shopId){EtsyService.getService("/shops/"+shopId+"/ledger/entries");}
 /**
 *Get a Shop Payment Account Ledger Entry
 */
+@JsonIgnore
 public static void findLedgerEntry(String shopId, int ledgerEntryId){EtsyService.getService("/shops/"+shopId+"/ledger/entries/"+ledgerEntryId);}
 }

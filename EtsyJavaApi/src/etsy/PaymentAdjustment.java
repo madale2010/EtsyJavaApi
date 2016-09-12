@@ -1,43 +1,57 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class PaymentAdjustment {
-	private int paymentAdjustmentId;
-	private int paymentId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class PaymentAdjustment extends EtsyService {
+	@JsonProperty("payment_adjustment_id")
+	private Integer paymentAdjustmentId;
+	@JsonProperty("payment_id")
+	private Integer paymentId;
+	@JsonProperty("status")
 	private String status;
-	private boolean isSuccess;
-	private int userId;
+	@JsonProperty("is_success")
+	private Boolean isSuccess;
+	@JsonProperty("user_id")
+	private Integer userId;
+	@JsonProperty("reason_code")
 	private String reasonCode;
-	private int totalAdjustmentAmount;
-	private int shopTotalAdjustmentAmount;
-	private int buyerTotalAdjustmentAmount;
-	private int totalFeeAdjustmentAmount;
-	private int createDate;
-	private int updateDate;
+	@JsonProperty("total_adjustment_amount")
+	private Integer totalAdjustmentAmount;
+	@JsonProperty("shop_total_adjustment_amount")
+	private Integer shopTotalAdjustmentAmount;
+	@JsonProperty("buyer_total_adjustment_amount")
+	private Integer buyerTotalAdjustmentAmount;
+	@JsonProperty("total_fee_adjustment_amount")
+	private Integer totalFeeAdjustmentAmount;
+	@JsonProperty("create_date")
+	private Integer createDate;
+	@JsonProperty("update_date")
+	private Integer updateDate;
 	/**
 	 * @return the paymentAdjustmentId
 	 */
-	public int getPaymentAdjustmentId() {
+	public Integer getPaymentAdjustmentId() {
 		return paymentAdjustmentId;
 	}
 	/**
 	 * @param paymentAdjustmentId the paymentAdjustmentId to set
 	 */
-	public void setPaymentAdjustmentId(int paymentAdjustmentId) {
+	public void setPaymentAdjustmentId(Integer paymentAdjustmentId) {
 		this.paymentAdjustmentId = paymentAdjustmentId;
 	}
 	/**
 	 * @return the paymentId
 	 */
-	public int getPaymentId() {
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 	/**
 	 * @param paymentId the paymentId to set
 	 */
-	public void setPaymentId(int paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 	/**
@@ -55,25 +69,25 @@ public class PaymentAdjustment {
 	/**
 	 * @return the isSuccess
 	 */
-	public boolean isSuccess() {
+	public Boolean isSuccess() {
 		return isSuccess;
 	}
 	/**
 	 * @param isSuccess the isSuccess to set
 	 */
-	public void setSuccess(boolean isSuccess) {
+	public void setSuccess(Boolean isSuccess) {
 		this.isSuccess = isSuccess;
 	}
 	/**
 	 * @return the userId
 	 */
-	public int getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	/**
 	 * @param userId the userId to set
 	 */
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 	/**
@@ -91,85 +105,88 @@ public class PaymentAdjustment {
 	/**
 	 * @return the totalAdjustmentAmount
 	 */
-	public int getTotalAdjustmentAmount() {
+	public Integer getTotalAdjustmentAmount() {
 		return totalAdjustmentAmount;
 	}
 	/**
 	 * @param totalAdjustmentAmount the totalAdjustmentAmount to set
 	 */
-	public void setTotalAdjustmentAmount(int totalAdjustmentAmount) {
+	public void setTotalAdjustmentAmount(Integer totalAdjustmentAmount) {
 		this.totalAdjustmentAmount = totalAdjustmentAmount;
 	}
 	/**
 	 * @return the shopTotalAdjustmentAmount
 	 */
-	public int getShopTotalAdjustmentAmount() {
+	public Integer getShopTotalAdjustmentAmount() {
 		return shopTotalAdjustmentAmount;
 	}
 	/**
 	 * @param shopTotalAdjustmentAmount the shopTotalAdjustmentAmount to set
 	 */
-	public void setShopTotalAdjustmentAmount(int shopTotalAdjustmentAmount) {
+	public void setShopTotalAdjustmentAmount(Integer shopTotalAdjustmentAmount) {
 		this.shopTotalAdjustmentAmount = shopTotalAdjustmentAmount;
 	}
 	/**
 	 * @return the buyerTotalAdjustmentAmount
 	 */
-	public int getBuyerTotalAdjustmentAmount() {
+	public Integer getBuyerTotalAdjustmentAmount() {
 		return buyerTotalAdjustmentAmount;
 	}
 	/**
 	 * @param buyerTotalAdjustmentAmount the buyerTotalAdjustmentAmount to set
 	 */
-	public void setBuyerTotalAdjustmentAmount(int buyerTotalAdjustmentAmount) {
+	public void setBuyerTotalAdjustmentAmount(Integer buyerTotalAdjustmentAmount) {
 		this.buyerTotalAdjustmentAmount = buyerTotalAdjustmentAmount;
 	}
 	/**
 	 * @return the totalFeeAdjustmentAmount
 	 */
-	public int getTotalFeeAdjustmentAmount() {
+	public Integer getTotalFeeAdjustmentAmount() {
 		return totalFeeAdjustmentAmount;
 	}
 	/**
 	 * @param totalFeeAdjustmentAmount the totalFeeAdjustmentAmount to set
 	 */
-	public void setTotalFeeAdjustmentAmount(int totalFeeAdjustmentAmount) {
+	public void setTotalFeeAdjustmentAmount(Integer totalFeeAdjustmentAmount) {
 		this.totalFeeAdjustmentAmount = totalFeeAdjustmentAmount;
 	}
 	/**
 	 * @return the createDate
 	 */
-	public int getCreateDate() {
+	public Integer getCreateDate() {
 		return createDate;
 	}
 	/**
 	 * @param createDate the createDate to set
 	 */
-	public void setCreateDate(int createDate) {
+	public void setCreateDate(Integer createDate) {
 		this.createDate = createDate;
 	}
 	/**
 	 * @return the updateDate
 	 */
-	public int getUpdateDate() {
+	public Integer getUpdateDate() {
 		return updateDate;
 	}
 	/**
 	 * @param updateDate the updateDate to set
 	 */
-	public void setUpdateDate(int updateDate) {
+	public void setUpdateDate(Integer updateDate) {
 		this.updateDate = updateDate;
 	}
 	/**
 	*Get a Payment Adjustments from a Payment Id
 	*/
-	public static void findPaymentAdjustments(int paymentId){EtsyService.getService("/payments/"+paymentId+"/adjustments");}
+	@JsonIgnore
+	public static void findPaymentAdjustments(Integer paymentId){EtsyService.getService("/payments/"+paymentId+"/adjustments");}
 	/**
 	*Get a Direct Checkout Payment Adjustment
 	*/
-	public static void findPaymentAdjustment(int paymentId, int paymentAdjustmentId){EtsyService.getService("/payments/"+paymentId+"/adjustments/"+paymentAdjustmentId);}
+	@JsonIgnore
+	public static void findPaymentAdjustment(Integer paymentId, int paymentAdjustmentId){EtsyService.getService("/payments/"+paymentId+"/adjustments/"+paymentAdjustmentId);}
 	/**
 	*Get a Payment Adjustment from a Ledger Entry ID, if applicable
 	*/
+	@JsonIgnore
 	public static void findPaymentAdjustmentForLedgerEntry(String shopId, int ledgerEntryId){EtsyService.getService("/shops/:shop_id/ledger/entries/"+ledgerEntryId+"/adjustment");}
 }

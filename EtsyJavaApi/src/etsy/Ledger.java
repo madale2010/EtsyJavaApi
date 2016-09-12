@@ -1,24 +1,31 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Ledger {
- private int ledgerId;
- private String shopId;
- private String currency;
- private int createDate;
- private int updateDate;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Ledger extends EtsyService {
+ @JsonProperty("ledger_id")
+	private Integer ledgerId;
+ @JsonProperty("shop_id")
+	private String shopId;
+ @JsonProperty("currency")
+	private String currency;
+ @JsonProperty("create_date")
+	private Integer createDate;
+ @JsonProperty("update_date")
+	private Integer updateDate;
 /**
  * @return the ledgerId
  */
-public int getLedgerId() {
+public Integer getLedgerId() {
 	return ledgerId;
 }
 /**
  * @param ledgerId the ledgerId to set
  */
-public void setLedgerId(int ledgerId) {
+public void setLedgerId(Integer ledgerId) {
 	this.ledgerId = ledgerId;
 }
 /**
@@ -48,29 +55,30 @@ public void setCurrency(String currency) {
 /**
  * @return the createDate
  */
-public int getCreateDate() {
+public Integer getCreateDate() {
 	return createDate;
 }
 /**
  * @param createDate the createDate to set
  */
-public void setCreateDate(int createDate) {
+public void setCreateDate(Integer createDate) {
 	this.createDate = createDate;
 }
 /**
  * @return the updateDate
  */
-public int getUpdateDate() {
+public Integer getUpdateDate() {
 	return updateDate;
 }
 /**
  * @param updateDate the updateDate to set
  */
-public void setUpdateDate(int updateDate) {
+public void setUpdateDate(Integer updateDate) {
 	this.updateDate = updateDate;
 }
 /**
 *Get a Shop Payment Account Ledger
 */
+@JsonIgnore
 public static void findLedger(String shopId){EtsyService.getService("/shops/"+shopId+"/ledger/");}
 }

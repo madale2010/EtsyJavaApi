@@ -3,40 +3,51 @@ package etsy;
 import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class CartListing {
-	private int listingId;
-	private int purchaseQuantity;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CartListing extends EtsyService {
+	@JsonProperty("listing_id")
+	private Integer listingId;
+	@JsonProperty("purchase_quantity")
+	private Integer purchaseQuantity;
+	@JsonProperty("purchase_state")
 	private String purchaseState;
-	private boolean isDigital;
+	@JsonProperty("is_digital")
+	private Boolean isDigital;
+	@JsonProperty("file_data")
 	private String fileData;
-	private int listingCustomizationId;
-	private boolean variationsAvailable;
-	private boolean hasVariations;
+	@JsonProperty("listing_customization_id")
+	private Integer listingCustomizationId;
+	@JsonProperty("variations_available")
+	private Boolean variationsAvailable;
+	@JsonProperty("has_variations")
+	private Boolean hasVariations;
+	@JsonProperty("selected_variations")
 	private ArrayList<VariationsSelectedProperty> selectedVariations;
-	private boolean offersLocalDelivery;
+	@JsonProperty("offers_local_delivery")
+	private Boolean offersLocalDelivery;
 	/**
 	 * @return the listingId
 	 */
-	public int getListingId() {
+	public Integer getListingId() {
 		return listingId;
 	}
 	/**
 	 * @param listingId the listingId to set
 	 */
-	public void setListingId(int listingId) {
+	public void setListingId(Integer listingId) {
 		this.listingId = listingId;
 	}
 	/**
 	 * @return the purchaseQuantity
 	 */
-	public int getPurchaseQuantity() {
+	public Integer getPurchaseQuantity() {
 		return purchaseQuantity;
 	}
 	/**
 	 * @param purchaseQuantity the purchaseQuantity to set
 	 */
-	public void setPurchaseQuantity(int purchaseQuantity) {
+	public void setPurchaseQuantity(Integer purchaseQuantity) {
 		this.purchaseQuantity = purchaseQuantity;
 	}
 	/**
@@ -54,13 +65,13 @@ public class CartListing {
 	/**
 	 * @return the isDigital
 	 */
-	public boolean isDigital() {
+	public Boolean isDigital() {
 		return isDigital;
 	}
 	/**
 	 * @param isDigital the isDigital to set
 	 */
-	public void setDigital(boolean isDigital) {
+	public void setDigital(Boolean isDigital) {
 		this.isDigital = isDigital;
 	}
 	/**
@@ -78,37 +89,37 @@ public class CartListing {
 	/**
 	 * @return the listingCustomizationId
 	 */
-	public int getListingCustomizationId() {
+	public Integer getListingCustomizationId() {
 		return listingCustomizationId;
 	}
 	/**
 	 * @param listingCustomizationId the listingCustomizationId to set
 	 */
-	public void setListingCustomizationId(int listingCustomizationId) {
+	public void setListingCustomizationId(Integer listingCustomizationId) {
 		this.listingCustomizationId = listingCustomizationId;
 	}
 	/**
 	 * @return the variationsAvailable
 	 */
-	public boolean isVariationsAvailable() {
+	public Boolean isVariationsAvailable() {
 		return variationsAvailable;
 	}
 	/**
 	 * @param variationsAvailable the variationsAvailable to set
 	 */
-	public void setVariationsAvailable(boolean variationsAvailable) {
+	public void setVariationsAvailable(Boolean variationsAvailable) {
 		this.variationsAvailable = variationsAvailable;
 	}
 	/**
 	 * @return the hasVariations
 	 */
-	public boolean isHasVariations() {
+	public Boolean isHasVariations() {
 		return hasVariations;
 	}
 	/**
 	 * @param hasVariations the hasVariations to set
 	 */
-	public void setHasVariations(boolean hasVariations) {
+	public void setHasVariations(Boolean hasVariations) {
 		this.hasVariations = hasVariations;
 	}
 	/**
@@ -126,13 +137,13 @@ public class CartListing {
 	/**
 	 * @return the offersLocalDelivery
 	 */
-	public boolean isOffersLocalDelivery() {
+	public Boolean isOffersLocalDelivery() {
 		return offersLocalDelivery;
 	}
 	/**
 	 * @param offersLocalDelivery the offersLocalDelivery to set
 	 */
-	public void setOffersLocalDelivery(boolean offersLocalDelivery) {
+	public void setOffersLocalDelivery(Boolean offersLocalDelivery) {
 		this.offersLocalDelivery = offersLocalDelivery;
 	}
 }

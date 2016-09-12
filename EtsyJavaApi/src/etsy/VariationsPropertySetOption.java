@@ -1,22 +1,27 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class VariationsPropertySetOption {
-	private int propertyOptionId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class VariationsPropertySetOption extends EtsyService {
+	@JsonProperty("property_option_id")
+	private Integer propertyOptionId;
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("formatted_name")
 	private String formattedName;
 	/**
 	 * @return the propertyOptionId
 	 */
-	public int getPropertyOptionId() {
+	public Integer getPropertyOptionId() {
 		return propertyOptionId;
 	}
 	/**
 	 * @param propertyOptionId the propertyOptionId to set
 	 */
-	public void setPropertyOptionId(int propertyOptionId) {
+	public void setPropertyOptionId(Integer propertyOptionId) {
 		this.propertyOptionId = propertyOptionId;
 	}
 	/**
@@ -46,5 +51,6 @@ public class VariationsPropertySetOption {
 	/**
 	*Finds all suggested property options for a given property.
 	*/
+	@JsonIgnore
 	public static void getAllSuggestedPropertyOptions(){EtsyService.getService("/property_options/suggested");}
 }

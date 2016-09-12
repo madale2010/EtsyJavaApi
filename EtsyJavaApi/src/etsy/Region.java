@@ -1,22 +1,27 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Region {
-	private int regionId;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Region extends EtsyService {
+	@JsonProperty("region_id")
+	private Integer regionId;
+	@JsonProperty("region_name")
 	private String regionName;
-	private boolean isDead;
+	@JsonProperty("is_dead")
+	private Boolean isDead;
 	/**
 	 * @return the regionId
 	 */
-	public int getRegionId() {
+	public Integer getRegionId() {
 		return regionId;
 	}
 	/**
 	 * @param regionId the regionId to set
 	 */
-	public void setRegionId(int regionId) {
+	public void setRegionId(Integer regionId) {
 		this.regionId = regionId;
 	}
 	/**
@@ -34,25 +39,28 @@ public class Region {
 	/**
 	 * @return the isDead
 	 */
-	public boolean isDead() {
+	public Boolean isDead() {
 		return isDead;
 	}
 	/**
 	 * @param isDead the isDead to set
 	 */
-	public void setDead(boolean isDead) {
+	public void setDead(Boolean isDead) {
 		this.isDead = isDead;
 	}
 	/**
 	*Finds all Region.
 	*/
+	@JsonIgnore
 	public static void getAllRegion(){EtsyService.getService("/regions");}
 	/**
 	*Retrieves a Region by id.
 	*/
+	@JsonIgnore
 	public static void getRegion(String regionId){EtsyService.getService("/regions/"+regionId);}
 	/**
 	*
 	*/
+	@JsonIgnore
 	public static void findEligibleRegions(){EtsyService.getService("/regions/eligible");}
 }

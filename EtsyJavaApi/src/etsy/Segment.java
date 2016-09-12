@@ -1,17 +1,27 @@
 package etsy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class Segment {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Segment extends EtsyService {
+	@JsonProperty("name")
 	private String name;
+	@JsonProperty("path")
 	private String path;
+	@JsonProperty("short_name")
 	private String shortName;
-	private boolean hasChildren;
+	@JsonProperty("has_children")
+	private Boolean hasChildren;
+	@JsonProperty("image_url")
 	private String imageUrl;
-	private int shopId;
-	private int shopName;
-	private int listingId;
+	@JsonProperty("shop_id")
+	private Integer shopId;
+	@JsonProperty("shop_name")
+	private Integer shopName;
+	@JsonProperty("listing_id")
+	private Integer listingId;
 	/**
 	 * @return the name
 	 */
@@ -51,13 +61,13 @@ public class Segment {
 	/**
 	 * @return the hasChildren
 	 */
-	public boolean isHasChildren() {
+	public Boolean isHasChildren() {
 		return hasChildren;
 	}
 	/**
 	 * @param hasChildren the hasChildren to set
 	 */
-	public void setHasChildren(boolean hasChildren) {
+	public void setHasChildren(Boolean hasChildren) {
 		this.hasChildren = hasChildren;
 	}
 	/**
@@ -75,41 +85,42 @@ public class Segment {
 	/**
 	 * @return the shopId
 	 */
-	public int getShopId() {
+	public Integer getShopId() {
 		return shopId;
 	}
 	/**
 	 * @param shopId the shopId to set
 	 */
-	public void setShopId(int shopId) {
+	public void setShopId(Integer shopId) {
 		this.shopId = shopId;
 	}
 	/**
 	 * @return the shopName
 	 */
-	public int getShopName() {
+	public Integer getShopName() {
 		return shopName;
 	}
 	/**
 	 * @param shopName the shopName to set
 	 */
-	public void setShopName(int shopName) {
+	public void setShopName(Integer shopName) {
 		this.shopName = shopName;
 	}
 	/**
 	 * @return the listingId
 	 */
-	public int getListingId() {
+	public Integer getListingId() {
 		return listingId;
 	}
 	/**
 	 * @param listingId the listingId to set
 	 */
-	public void setListingId(int listingId) {
+	public void setListingId(Integer listingId) {
 		this.listingId = listingId;
 	}
 	/**
 	*Find all Browse Segments
 	*/
+	@JsonIgnore
 	public static void findBrowseSegments(){EtsyService.getService("/segments");}
 }
