@@ -2,6 +2,9 @@
 
 Etsy Java Api lets you configure oauth and make api calls based on the Etsy Api Framework.
 Making call request and reading responses has never been easier. After you have configured your etsy service file you can simply build the object your looking for and add it with a simple method call.
+Be sure to follow the etsy getting started guide here https://www.etsy.com/developers/documentation/
+Always check the api when making method calles to ensure you are populating the required data.
+
 
 #Getting Started
 	First you will need to create a developer's app account from etsy. 
